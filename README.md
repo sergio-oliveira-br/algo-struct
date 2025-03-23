@@ -22,11 +22,11 @@ The application is hosted on Heroku and can be accessed here: WIP
 
 ## Author
 
-\Sérgio Oliveira
+Sérgio Oliveira
 
 
 ## Academic Information
 
 * **Course:** Higher Diploma in Computer Science
-* **Institution:** \National College of Ireland
-* **Year of Completion:** \2024
+* **Institution:** National College of Ireland
+* **Year of Completion:** 2024
