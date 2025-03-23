@@ -22,8 +22,8 @@ The application is hosted on Heroku and can be accessed here: WIP
 
 ## Author
 
-Sérgio Oliveira, +353 86 272 1772
-oliveira-sergio@outlook.com
+* Sérgio Oliveira, +353 86 272 1772
+* oliveira-sergio@outlook.com
 
 
 
