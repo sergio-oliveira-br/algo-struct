@@ -2,7 +2,7 @@
 
 ## Description
 
-"algo-struct" is a Spring Boot project showcasing advanced algorithms, data structures, and distributed systems concepts, developed as a personal portfolio to present skills to potential recruiters. Based on knowledge acquired during the Higher Diploma in Computer Science, this project explores the following areas:
+AlgoStruct is a Spring Boot project showcasing advanced algorithms, data structures, and distributed systems concepts, developed as a personal portfolio to present skills to potential recruiters. Based on knowledge acquired during the Higher Diploma in Computer Science, this project explores the following areas:
 
 * **Advanced Algorithms:** Implementation of search, sorting, graph, and dynamic programming algorithms.
 * **Data Structures:** Implementation and analysis of linked lists, trees, hash tables, and other relevant data structures.
