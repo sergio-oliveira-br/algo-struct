@@ -1,0 +1,14 @@
+#console {
+    width: 80%;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-family: monospace;
+    background-color: #f0f0f0;
+}
+
+#console-output {
+    height: 200px;
+    overflow-y: scroll;
+    margin-bottom: 10px;
+}
