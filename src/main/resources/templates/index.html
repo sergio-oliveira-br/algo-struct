@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,13 +32,12 @@
                             <h5 class="card-title">Generate Random Numbers</h5>
                             <p class="card-text">Enter the number of numbers you want to generate</p>
 
-                            <form>
+                            <form th:action="@{/random-num/generate}" method="get">
                                 <div class="input-group mb-3">
-                                    <input type="number" class="form-control" placeholder="Qty of Numbers" aria-label="numbers">
+                                    <input type="number" class="form-control" placeholder="Qty of Numbers" aria-label="numbers" name="qty">
                                 </div>
+                                <button type="submit" class="btn btn-primary">Generate</button>
                             </form>
-
-                            <a href="#" class="btn btn-primary">Generate</a>
                         </div>
                     </div>
                 </section>
