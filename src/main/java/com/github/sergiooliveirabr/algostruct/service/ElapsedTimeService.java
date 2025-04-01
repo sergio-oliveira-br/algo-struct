@@ -7,9 +7,9 @@ public class ElapsedTimeService {
 
     long elapsedTime;
 
-    public String getElapsedTime(long endTime, long startTime) {
+    public Long getElapsedTime(long endTime, long startTime) {
 
         elapsedTime = endTime - startTime;
-        return  "Elapsed Time: " + elapsedTime + "mill";
+        return elapsedTime;
     }
 }
