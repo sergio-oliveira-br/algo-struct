@@ -21,19 +21,11 @@ public class RandomNumService {
         Random randomNums = new Random();
         int[] randomNumbersArray = new int[qty];
 
-        long startTime;
-        long endTime;
-
-        startTime = System.currentTimeMillis();
-
         for (int i = 0; i < qty; i++) {
             randomNumbersArray[i] = randomNums.nextInt(100);
         }
 
-        endTime = System.currentTimeMillis();
-        elapsedTimeService.getElapsedTime(endTime, startTime);
-
-        System.out.println("This is the RandomNumberArray: " + Arrays.toString(randomNumbersArray));
+        System.out.println("This is the Random Number Array: " + Arrays.toString(randomNumbersArray));
 
         return randomNumbersArray;
     }
