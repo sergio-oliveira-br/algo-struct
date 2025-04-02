@@ -18,26 +18,29 @@ public class BubbleSortService implements SortingAlgorithm {
 
         System.out.println("Bubble Sort");
 
-        long startTime = System.currentTimeMillis();
+        long startTimeMillis = System.currentTimeMillis();
 
-        for (int i = 0; i < array.length - 1; i++) {
+        for (int outerIndex = 0; outerIndex < array.length - 1; outerIndex++) {
 
-            boolean swapped = false;
+            boolean elementsSwapped = false;
 
-            for (int j = 0; j < array.length - i - 1; j++) {
-                if (array[j] > array[j + 1]) {
-                    int temp = array[j];
-                    array[j] = array[j + 1];
-                    array[j + 1] = temp;
-                    swapped = true;
+            for (int innerIndex = 0; innerIndex < array.length - outerIndex - 1; innerIndex++) {
+
+                if (array[innerIndex] > array[innerIndex + 1]) {
+                    int temporaryValue = array[innerIndex];
+
+                    array[innerIndex] = array[innerIndex + 1];
+                    array[innerIndex + 1] = temporaryValue;
+                    
+                    elementsSwapped = true;
                 }
             }
-            if (!swapped) break;
+            if (!elementsSwapped) break;
         }
-        long endTime = System.currentTimeMillis();
-        long elapsedTime = endTime - startTime;
+        long endTimeMillis = System.currentTimeMillis();
+        long elapsedTimeMillis = endTimeMillis - startTimeMillis;
 
-        return elapsedTimeService.formatElapsedTime(elapsedTime);
+        return elapsedTimeService.formatElapsedTime(elapsedTimeMillis);
     }
 
     @Override
