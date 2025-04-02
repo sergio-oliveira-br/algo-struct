@@ -9,13 +9,6 @@ import java.util.Random;
 @Service
 public class RandomNumService {
 
-    private final ElapsedTimeService elapsedTimeService;
-
-    @Autowired
-    public RandomNumService(ElapsedTimeService elapsedTimeService) {
-        this.elapsedTimeService = elapsedTimeService;
-    }
-
     public int[] generateRandomNum(int qty) {
 
         Random randomNums = new Random();
