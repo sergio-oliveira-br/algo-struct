@@ -4,32 +4,44 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class BubbleSortService {
+public class BubbleSortService implements SortingAlgorithm {
 
-    private final RandomNumService randomNumService;
     private final ElapsedTimeService elapsedTimeService;
 
     @Autowired
-    public BubbleSortService(RandomNumService randomNumService,
-                             ElapsedTimeService elapsedTimeService) {
-        this.randomNumService = randomNumService;
+    public BubbleSortService(ElapsedTimeService elapsedTimeService) {
         this.elapsedTimeService = elapsedTimeService;
     }
 
-    public void bubbleSort(int[] randomNumberArray) {
+    @Override
+    public long sort(int[] array) {
 
-        for (int i = 0; i < randomNumberArray.length - 1; i++) {
+        System.out.println("Bubble Sort");
 
-            for (int j = 0; j < randomNumberArray.length - i - 1; j++) {
+        long startTime = System.currentTimeMillis();
 
-                if (randomNumberArray[j] > randomNumberArray[j + 1]) {
+        for (int i = 0; i < array.length - 1; i++) {
 
-                    int temp = randomNumberArray[j];
+            boolean swapped = false;
 
-                    randomNumberArray[j] = randomNumberArray[j + 1];
-                    randomNumberArray[j + 1] = temp;
+            for (int j = 0; j < array.length - i - 1; j++) {
+                if (array[j] > array[j + 1]) {
+                    int temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                    swapped = true;
                 }
             }
+            if (!swapped) break;
         }
+        long endTime = System.currentTimeMillis();
+        long elapsedTime = endTime - startTime;
+
+        return elapsedTimeService.formatElapsedTime(elapsedTime);
+    }
+
+    @Override
+    public String getAlgorithmName() {
+        return "Bubble Sort";
     }
 }
