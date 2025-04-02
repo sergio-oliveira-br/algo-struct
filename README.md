@@ -18,7 +18,7 @@ AlgoStruct is a Spring Boot project showcasing advanced algorithms, data structu
 
 ## Demonstration
 
-The application is hosted on Heroku and can be accessed here: WIP
+The application is hosted on Heroku and can be accessed here: https://algo-struct-be23b0a0fa35.herokuapp.com/ 
 
 
 ## Author
