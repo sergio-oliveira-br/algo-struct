@@ -42,35 +42,35 @@
                                 <p class="card-text">Select the algorithms that will sort your generated data</p>
 
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="bubble-sort" name="bubble-sort">
+                                    <input class="form-check-input" type="checkbox" id="bubble-sort" name="algorithms" value="bubbleSort">
                                     <label class="form-check-label" for="bubble-sort">
                                         Bubble Sort
                                     </label>
                                 </div>
 
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="selection-sort">
+                                    <input class="form-check-input" type="checkbox" id="selection-sort" name="algorithms" value="selection-sort">
                                     <label class="form-check-label" for="selection-sort">
                                         Selection Sort
                                     </label>
                                 </div>
 
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="insertion-sort">
+                                    <input class="form-check-input" type="checkbox" id="insertion-sort">
                                     <label class="form-check-label" for="insertion-sort">
                                         Insertion Sort
                                     </label>
                                 </div>
 
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="merge-sort">
+                                    <input class="form-check-input" type="checkbox" id="merge-sort">
                                     <label class="form-check-label" for="merge-sort">
                                         Merge Sort
                                     </label>
                                 </div>
 
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="quick-sort">
+                                    <input class="form-check-input" type="checkbox" id="quick-sort">
                                     <label class="form-check-label" for="quick-sort">
                                         Quick Sort
                                     </label>
@@ -90,8 +90,10 @@
                         <div class="card-body" th:object="${randomNumbers}">
                             <h5>Statistics</h5>
                             <p th:text="${qty}"></p>
-                            <p th:text="${randomNumbers}"></p>
-                            <p th:text="${bubbleSort}"></p>
+<!--                            <p th:text="${randomNumbers}"></p>-->
+                            <div th:each="entry : ${executionTimes}">
+                                <p th:text="${entry.key} + ': ' + ${entry.value} + ' nanosseconds' "></p>
+                            </div>
                         </div>
                     </div>
                 </section>
