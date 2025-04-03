@@ -1,8 +1,8 @@
 package com.github.sergiooliveirabr.algostruct.controller;
 
-import com.github.sergiooliveirabr.algostruct.service.ElapsedTimeService;
 import com.github.sergiooliveirabr.algostruct.service.RandomNumService;
-import com.github.sergiooliveirabr.algostruct.service.SortingAlgorithm;
+import com.github.sergiooliveirabr.algostruct.service.SortingService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,39 +16,29 @@ import java.util.*;
 public class GenerateAndSortController {
 
     private final RandomNumService randomNumService;
-    private final ElapsedTimeService elapsedTimeService;
-    private final Map<String, SortingAlgorithm> sortingAlgorithms;
-    private final SortingAlgorithm sortingAlgorithm;
+    private final SortingService sortingService;
 
-    public GenerateAndSortController(RandomNumService randomNumService, ElapsedTimeService elapsedTimeService,
-                                     Map<String, SortingAlgorithm> sortingAlgorithms, SortingAlgorithm sortingAlgorithm) {
+    @Autowired
+    public GenerateAndSortController(RandomNumService randomNumService,
+                                     SortingService sortingService) {
+
         this.randomNumService = randomNumService;
-        this.elapsedTimeService = elapsedTimeService;
-        this.sortingAlgorithms = sortingAlgorithms;
-        this.sortingAlgorithm = sortingAlgorithm;
+        this.sortingService = sortingService;
     }
 
     @GetMapping
     public String GenerateAndSort(Model model,
                                   @RequestParam int qty,
-                                  @RequestParam("algorithms") List<String> algorithms) {
+                                  @RequestParam List<String> algorithm) {
+
+        System.out.println("[Controller] - User Selected - Algorithm: " + algorithm);
 
         //Generate Random Nums
         int[] generatedNumbers = randomNumService.generateRandomNum(qty);
         model.addAttribute("randomNumbers", Arrays.toString(generatedNumbers));
         model.addAttribute("qty", "Amount of Data: " + qty);
 
-        Map<String, Long> executionTimes = new HashMap<>();
-
-        for(String algorithmName : algorithms) {
-
-            if(sortingAlgorithm.getAlgorithmName() != null) {
-                long elapsedTime = elapsedTimeService.formatElapsedTime(sortingAlgorithm.sort(generatedNumbers.clone()));
-                executionTimes.put(algorithmName,elapsedTime);
-                System.out.println("Elapsed time: " + elapsedTime);
-            }
-        }
-
+        Map<String, Long> executionTimes = sortingService.executeSortingAlgorithms(generatedNumbers, algorithm);
         model.addAttribute("executionTimes", executionTimes);
 
         return "index";
