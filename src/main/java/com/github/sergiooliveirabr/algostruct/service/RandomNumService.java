@@ -17,7 +17,7 @@ public class RandomNumService {
             randomNumbersArray[i] = randomNums.nextInt(100);
         }
 
-        System.out.println("This is the Random Number Array: " + Arrays.toString(randomNumbersArray));
+        System.out.println("\nNumbers Generated: " + Arrays.toString(randomNumbersArray));
 
         return randomNumbersArray;
     }
