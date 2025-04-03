@@ -16,7 +16,7 @@ public class BubbleSortService implements SortingAlgorithm {
     @Override
     public long sort(int[] array) {
 
-        System.out.println("Bubble Sort");
+        System.out.println("Executing the Bubble Sort method");
 
         long startTimeMillis = System.currentTimeMillis();
 
