@@ -42,9 +42,4 @@ public class BubbleSortService implements SortingAlgorithm {
 
         return elapsedTimeService.formatElapsedTime(elapsedTimeMillis);
     }
-
-    @Override
-    public String getAlgorithmName() {
-        return "Bubble Sort";
-    }
 }
