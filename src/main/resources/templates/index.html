@@ -22,10 +22,9 @@
 
         <main class="container-fluid">
 
-            <div class="row d-flex flex-column g-4">
-
-                <section>
-                    <div class="card col-12 col-md-6 col-lg-4 mt-3">
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-4 mt-3">
+                    <div class="card">
                         <h5 class="card-header">Sort Algorithms</h5>
 
                         <div class="card-body">
@@ -84,23 +83,19 @@
                             </form>
                         </div>
                     </div>
-                </section>
 
-
-                <section>
-                    <div class="card col-12 col-md-6 col-lg-4 mt-3">
+                    <div class="card mt-3">
                         <div class="card-header">Random Numbers</div>
 
                         <div class="card-body" th:object="${randomNumbers}">
                             <h5>Statistics</h5>
                             <p th:text="${qty}"></p>
-<!--                            <p th:text="${randomNumbers}"></p>-->
+        <!--                            <p th:text="${randomNumbers}"></p>-->
                             <div th:each="entry : ${executionTimes}">
                                 <p th:text="${entry.key} + ': ' + ${entry.value} + ' nanosseconds' "></p>
                             </div>
                         </div>
                     </div>
-                </section>
                 </div>
 
 
