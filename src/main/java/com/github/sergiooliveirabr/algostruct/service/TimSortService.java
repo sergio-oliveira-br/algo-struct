@@ -19,6 +19,8 @@ public class TimSortService  implements SortingAlgorithm {
     @Override
     public long sort(int[] array) {
 
+        System.out.println("Executing the Tim Sort method");
+
         long startTimeMillis = System.currentTimeMillis();
 
         //Arrays of int, double etc. use a modern variant of QuickSort called DualPivotQuickSort.
