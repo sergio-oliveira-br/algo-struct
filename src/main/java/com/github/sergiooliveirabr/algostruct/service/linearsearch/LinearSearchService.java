@@ -9,7 +9,7 @@ import java.util.Arrays;
 @Service
 public class LinearSearchService {
 
-    public String linearSeach (int[] arrayNumbers, int target) {
+    public String linearSearch(int[] arrayNumbers, int target) {
 
         System.out.println("Array: " + Arrays.toString(arrayNumbers));
         System.out.println("Target: " + target);
