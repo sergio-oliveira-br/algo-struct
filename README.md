@@ -13,7 +13,6 @@ AlgoStruct is a Spring Boot project showcasing advanced algorithms, data structu
 * Spring Boot
 * Thymeleaf
 * Maven
-* Restful API
 * Heroku
 
 ## Demonstration
