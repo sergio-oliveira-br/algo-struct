@@ -7,7 +7,7 @@ const myChart = new Chart (ctx, {
         labels: labels,
         datasets: [{
             data: data,
-            label: "qty"
+            label: "Nanoseconds"
 
         }]
     },
