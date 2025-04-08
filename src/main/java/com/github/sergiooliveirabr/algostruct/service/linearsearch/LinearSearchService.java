@@ -11,6 +11,8 @@ public class LinearSearchService {
 
     public String linearSearch(int[] arrayNumbers, int target) {
 
+        System.out.println("Executing the Linear Search method");
+
         System.out.println("Array: " + Arrays.toString(arrayNumbers));
         System.out.println("Target: " + target);
 
