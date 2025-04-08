@@ -25,12 +25,17 @@ As part of an ongoing commitment to professional growth, I am now expanding this
     * Insertion Sort
     * Selection Sort
 * **Performance Visualization:** The execution time of the selected sorting algorithms is displayed and visualized using a bar chart.
+  
 * **Search Algorithms:**
-    * **Linear Search:** A foundational search algorithm involving a sequential traversal of an array to locate a target value, integrated with a Spring Boot web controller enabling user input and result display.
+    * **Linear Search:** This is a foundational search algorithm involving a sequential traversal of an array to locate a target value. It is integrated with a Spring Boot web controller, enabling user input and result display.
+      
+    * **Array Analysis:**
+      * **Find Minimum and Maximum** Identifies and displays the smallest and largest elements within the generated array.
 
 **In Development:**
 * **Array Analysis:**
-    * **Find Minimum and Maximum:** Identifies and displays the smallest and largest elements within the generated array.
+    * **Check for Duplicates:** Determines if the generated array contains any duplicate elements.
+
 
 **Upcoming Learning and Implementation Areas:**
 
