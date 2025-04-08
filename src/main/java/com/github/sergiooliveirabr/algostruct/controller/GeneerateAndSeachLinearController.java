@@ -35,7 +35,7 @@ public class GeneerateAndSeachLinearController {
                                           @RequestParam int target) {
 
         int[] numbersGenerated = randomNumService.generateRandomNum(qty);
-        String result = linearSearchService.linearSeach(numbersGenerated, target);
+        String result = linearSearchService.linearSearch(numbersGenerated, target);
 
         model.addAttribute("numbersGenerated", Arrays.toString(numbersGenerated));
         model.addAttribute("qty", "It was generated " +  qty + " random numbers");
