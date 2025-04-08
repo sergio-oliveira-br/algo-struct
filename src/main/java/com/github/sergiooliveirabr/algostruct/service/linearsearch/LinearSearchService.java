@@ -1,7 +1,5 @@
 package com.github.sergiooliveirabr.algostruct.service.linearsearch;
 
-import com.github.sergiooliveirabr.algostruct.service.generator.RandomNumService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
