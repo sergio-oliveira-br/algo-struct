@@ -20,9 +20,14 @@ public class GeneerateAndSeachLinearController {
 
     private final RandomNumService randomNumService;
     private final LinearSearchService linearSearchService;
+    private final FindMinMaxService findMinMaxService;
+
 
     @Autowired
-    public GeneerateAndSeachLinearController(RandomNumService randomNumService, LinearSearchService linearSearchService) {
+    public GeneerateAndSeachLinearController(RandomNumService randomNumService,
+                                             LinearSearchService linearSearchService,
+                                             FindMinMaxService findMinMaxService) {
+
         this.randomNumService = randomNumService;
         this.linearSearchService = linearSearchService;
         this.findMinMaxService = findMinMaxService;
