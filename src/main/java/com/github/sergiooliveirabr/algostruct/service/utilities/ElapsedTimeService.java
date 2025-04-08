@@ -1,4 +1,4 @@
-package com.github.sergiooliveirabr.algostruct.service;
+package com.github.sergiooliveirabr.algostruct.service.utilities;
 
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,7 @@
 package com.github.sergiooliveirabr.algostruct.controller;
 
-import com.github.sergiooliveirabr.algostruct.service.RandomNumService;
-import com.github.sergiooliveirabr.algostruct.service.SortingService;
+import com.github.sergiooliveirabr.algostruct.service.generator.RandomNumService;
+import com.github.sergiooliveirabr.algostruct.service.sort.SortingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
