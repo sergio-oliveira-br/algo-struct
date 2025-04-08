@@ -14,7 +14,7 @@ AlgoStruct is a Spring Boot project meticulously developed as a personal portfol
 
 This project serves as a platform to explore and implement various concepts in computer science. Currently, the application allows users to generate a specified quantity of random numbers and then sort these numbers using a selection of common sorting algorithms. The performance of these algorithms is then visualized through a chart.
 
-As part of an ongoing commitment to professional growth, I am now expanding this project to include the study and practical implementation of fundamental data structures and search algorithms. The goal is to build a strong foundation and demonstrate the ability to translate theoretical knowledge into functional code accessible through a web interface. The implementation will follow a gradual approach, starting with fundamental concepts and progressively tackling more complex challenges as part of a continuous learning process.
+As part of an ongoing commitment to professional growth, I am now expanding this project to include the study and practical implementation of fundamental data structures and search algorithms, as well as basic array analysis. The goal is to build a strong foundation and demonstrate the ability to translate theoretical knowledge into functional code accessible through a web interface. The implementation will follow a gradual approach, starting with fundamental concepts and progressively tackling more complex challenges as part of a continuous learning process.
 
 **Implemented Features:**
 
@@ -25,18 +25,19 @@ As part of an ongoing commitment to professional growth, I am now expanding this
     * Insertion Sort
     * Selection Sort
 * **Performance Visualization:** The execution time of the selected sorting algorithms is displayed and visualized using a bar chart.
-
-**Current Development:**
-
 * **Search Algorithms:**
-    * **Linear Search:** A foundational search algorithm involving a sequential traversal of an array to locate a target value, integrated with a Spring Boot web controller enabling user input and result display. \[Status: In Development]
+    * **Linear Search:** A foundational search algorithm involving a sequential traversal of an array to locate a target value, integrated with a Spring Boot web controller enabling user input and result display.
+
+**In Development:**
+* **Array Analysis:**
+    * **Find Minimum and Maximum:** Identifies and displays the smallest and largest elements within the generated array.
 
 **Upcoming Learning and Implementation Areas:**
 
 This project will continue to evolve with the implementation of various data structures and algorithms, gradually increasing in complexity. Future areas of focus will include, but are not limited to:
 
 * Fundamental data structures such as linked lists, stacks, and queues.
-* Basic and advanced sorting algorithms not yet implemented (e.g., Merge Sort, Quick Sort).
+* Basic and advanced sorting algorithms have not yet been implemented (e.g., Merge Sort and Quick Sort).
 * Tree-based data structures and algorithms.
 * Graph-based data structures and algorithms.
 * Other relevant algorithmic techniques.
@@ -54,7 +55,7 @@ The specific challenges and their order of implementation will be determined as 
 
 The live application is hosted on Heroku and can be accessed at: [https://algo-struct-be23b0a0fa35.herokuapp.com/](https://algo-struct-be23b0a0fa35.herokuapp.com/)
 
-Currently, the application showcases the generation of random numbers and their sorting using the available algorithms, with visual representation of the execution times. As new data structures and algorithms are implemented, their interactive demonstrations will be integrated into the web interface, providing a hands-on way to explore their functionality. Updates on how to specifically test new features will be provided in the "Current Development" section.
+Currently, the application showcases the generation of random numbers and their sorting using the available algorithms, with visual representation of the execution times. The Linear Search functionality is also implemented, allowing users to search for a specific number within the generated array. The functionality to find the minimum and maximum elements in the generated array is currently under development and will be integrated into the "Output" section of the Linear Search page. As new data structures and algorithms are implemented, their interactive demonstrations will be integrated into the web interface, providing a hands-on way to explore their functionality. Updates on how to specifically test new features will be provided in the "Current Development" section.
 
 ## Author
 
