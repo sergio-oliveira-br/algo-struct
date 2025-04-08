@@ -49,8 +49,12 @@
                         <div class="card-body">
                             <h5 class="card-title">Generate and Search</h5>
 
+                            <form th:action="@{/generate-and-search/linear-search}">
                                 <p class="card-text">Enter the number of numbers you want to generate</p>
-                                <p> <p class="form-text text-muted">It is recommended to generate no more than 20 numbers for linear search for didactic purposes.</p>
+
+                                <p class="form-text text-muted">It is recommended to generate no more than 20 numbers
+                                    for linear search for didactic purposes.</p>
+
                                 <div class="input-group mb-3">
                                     <input type="number" class="form-control"
                                         placeholder="Qty of Numbers" aria-label="numbers" name="qty">
@@ -76,19 +80,67 @@
                             <p th:text="${qty}"></p>
                             <p th:text="${target}"></p>
                             <p th:text="${result}"></p>
-
                         </div>
-
                     </div>
                 </div>
 
 
+                <div class="col-12 col-md-6 col-lg-4 mt-3">
+                    <div class="card">
+                        <h5 class="card-header">Find Minimum/Maximum</h5>
 
+                        <div class="card-body">
+                            <h5 class="card-title">Generate and Search</h5>
+                            <form th:action="@{/generate-and-search/find-min-max}">
+                                <p class="card-text">Enter the number of numbers you want to generate</p>
 
+                                <p class="form-text text-muted">It is recommended to generate no more than 20 numbers
+                                 for didactic purposes.</p>
 
+                                <div class="input-group mb-3">
+                                    <input type="number" class="form-control"
+                                           placeholder="Qty of Numbers" aria-label="numbers" name="arraySize">
+                                </div>
 
+                                <p class="card-text">Select what you whant to find</p>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox"
+                                            id="minValue" name="findMinMaxAlgorithm" value="findMinService">
+
+                                    <label class="form-check-label" for="minValue">
+                                        Minimum Value
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox"
+                                           id="maxValue" name="findMinMaxAlgorithm" value="findMaxService">
+
+                                    <label class="form-check-label" for="maxValue">
+                                        Maximum Value
+                                    </label>
+                                </div>
+
+                                <button type="submit" class="btn btn-secondary mt-3">Generate/Find</button>
+
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="card mt-3">
+                        <div class="card-header">Output</div>
+
+                        <div class="card-body">
+                            <p th:text="${findNumbersGenerated}"></p>
+
+                            <div th:each="entry : ${resultMinMax}">
+                                <p th:text="${entry.key} + ': ' + ${entry.value}"></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
+            </div>
         </main>
 
 
