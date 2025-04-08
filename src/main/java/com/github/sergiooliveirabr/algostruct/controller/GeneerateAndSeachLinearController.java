@@ -1,5 +1,6 @@
 package com.github.sergiooliveirabr.algostruct.controller;
 
+import com.github.sergiooliveirabr.algostruct.service.findelement.FindMinMaxService;
 import com.github.sergiooliveirabr.algostruct.service.generator.RandomNumService;
 import com.github.sergiooliveirabr.algostruct.service.linearsearch.LinearSearchService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 @Controller
-@RequestMapping("/generate-and-search-linear")
+@RequestMapping("/generate-and-search")
 public class GeneerateAndSeachLinearController {
 
     private final RandomNumService randomNumService;
@@ -22,6 +25,7 @@ public class GeneerateAndSeachLinearController {
     public GeneerateAndSeachLinearController(RandomNumService randomNumService, LinearSearchService linearSearchService) {
         this.randomNumService = randomNumService;
         this.linearSearchService = linearSearchService;
+        this.findMinMaxService = findMinMaxService;
     }
 
     @GetMapping("/page")
@@ -29,7 +33,7 @@ public class GeneerateAndSeachLinearController {
         return "linear-search";
     }
 
-    @GetMapping
+    @GetMapping("/linear-search")
     public String generateAndSearchLinear(Model model,
                                           @RequestParam int qty,
                                           @RequestParam int target) {
@@ -41,6 +45,20 @@ public class GeneerateAndSeachLinearController {
         model.addAttribute("qty", "It was generated " +  qty + " random numbers");
         model.addAttribute("target", "Target: " + target);
         model.addAttribute("result", result);
+
+        return "linear-search";
+    }
+
+    @GetMapping("/find-min-max")
+    public String findMinMax(Model model,
+                             @RequestParam int arraySize,
+                             @RequestParam List<String> findMinMaxAlgorithm) {
+
+        int[] numbersGenerated = randomNumService.generateRandomNum(arraySize);
+        Map<String, Integer> resultMinMax = findMinMaxService.executeFindMinMaxAlgorithms(numbersGenerated, findMinMaxAlgorithm);
+
+        model.addAttribute("findNumbersGenerated", Arrays.toString(numbersGenerated));
+        model.addAttribute("resultMinMax", resultMinMax);
 
         return "linear-search";
     }
