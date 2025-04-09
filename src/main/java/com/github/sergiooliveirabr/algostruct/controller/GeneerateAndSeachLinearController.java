@@ -1,5 +1,6 @@
 package com.github.sergiooliveirabr.algostruct.controller;
 
+import com.github.sergiooliveirabr.algostruct.service.duplicatecheck.DuplicateCheckService;
 import com.github.sergiooliveirabr.algostruct.service.findelement.FindMinMaxService;
 import com.github.sergiooliveirabr.algostruct.service.generator.RandomNumService;
 import com.github.sergiooliveirabr.algostruct.service.linearsearch.LinearSearchService;
@@ -21,16 +22,19 @@ public class GeneerateAndSeachLinearController {
     private final RandomNumService randomNumService;
     private final LinearSearchService linearSearchService;
     private final FindMinMaxService findMinMaxService;
+    private final DuplicateCheckService duplicateCheckService;
 
 
     @Autowired
     public GeneerateAndSeachLinearController(RandomNumService randomNumService,
                                              LinearSearchService linearSearchService,
-                                             FindMinMaxService findMinMaxService) {
+                                             FindMinMaxService findMinMaxService,
+                                             DuplicateCheckService duplicateCheckService) {
 
         this.randomNumService = randomNumService;
         this.linearSearchService = linearSearchService;
         this.findMinMaxService = findMinMaxService;
+        this.duplicateCheckService = duplicateCheckService;
     }
 
     @GetMapping("/page")
@@ -66,5 +70,22 @@ public class GeneerateAndSeachLinearController {
         model.addAttribute("resultMinMax", resultMinMax);
 
         return "linear-search";
+    }
+
+    @GetMapping("/check-duplicates")
+    public String checkDuplicates(Model model,
+                                  @RequestParam int arrayLenght,
+                                  @RequestParam List<String> duplicateCheckerAlgoristhm) {
+
+        System.out.println("Controlador Acessado");
+
+        int[] numbersGenerated = randomNumService.generateRandomNum(arrayLenght);
+        Map<String, Boolean> resultCheckDuplicates = duplicateCheckService.executeDuplicateCheckAlgorithms(numbersGenerated, duplicateCheckerAlgoristhm);
+
+        model.addAttribute("duplicatesNumbersGenerated", Arrays.toString(numbersGenerated));
+        model.addAttribute("resultCheckDuplicates", resultCheckDuplicates);
+
+        return "linear-search";
+
     }
 }
