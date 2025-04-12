@@ -17,7 +17,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/generate-and-search")
-public class GeneerateAndSeachLinearController {
+public class GenerateAndSeachLinearController {
 
     private final RandomNumService randomNumService;
     private final LinearSearchService linearSearchService;
@@ -26,10 +26,10 @@ public class GeneerateAndSeachLinearController {
 
 
     @Autowired
-    public GeneerateAndSeachLinearController(RandomNumService randomNumService,
-                                             LinearSearchService linearSearchService,
-                                             FindMinMaxService findMinMaxService,
-                                             DuplicateCheckService duplicateCheckService) {
+    public GenerateAndSeachLinearController(RandomNumService randomNumService,
+                                            LinearSearchService linearSearchService,
+                                            FindMinMaxService findMinMaxService,
+                                            DuplicateCheckService duplicateCheckService) {
 
         this.randomNumService = randomNumService;
         this.linearSearchService = linearSearchService;
