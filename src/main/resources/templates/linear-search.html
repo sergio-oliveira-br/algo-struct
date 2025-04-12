@@ -175,14 +175,29 @@
                                 </div>
 
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="duplicateCheckerAlgoristhm" disabled>
+                                    <input class="form-check-input" type="radio" name="duplicateCheckerAlgoristhm"
+                                            id="usingSet" value="usingSetService">
 
-                                    <label class="form-check-label" for="">
-                                        Using a Set
+                                    <label class="form-check-label" for="usingSet">
+                                        Using a HashSet
                                     </label>
 
-                                    <p class="form-text text-muted">Add each element to a HashSet.
-                                        Adding an existing element will result in a false return if you attempt to do so.</p>
+                                    <p class="form-text text-muted">Iterate through the array,
+                                        adding each element to a HashSet.
+                                        If an element is already present, it indicates a duplicate.</p>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="duplicateCheckerAlgoristhm"
+                                           id="usingMap" value="usingMapService">
+
+                                    <label class="form-check-label" for="usingMap">
+                                        Using a HashMap
+                                    </label>
+
+                                    <p class="form-text text-muted">Iterate through the array,
+                                        using a HashMap to count occurrences of each element.
+                                        If any element's count exceeds one, a duplicate exists.</p>
                                 </div>
 
                                 <div class="form-check">
