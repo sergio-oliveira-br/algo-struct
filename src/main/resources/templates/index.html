@@ -18,32 +18,44 @@
 
 
   <body>
-    <header>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="/index">Home</a>
 
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                  aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <header class="text-center mb-5">
+      <h1>AlgoStruct</h1>
+      <p class="lead">A portfolio project showcasing the journey of learning and implementing fundamental
+        algorithms and data structures in Java.</p>
+    </header>
 
-            <span class="navbar-toggler-icon"></span>
-          </button>
+    <main class="container mt-3">
 
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <div class="row row-cols-1 row-cols-md-4 g-4">
 
-              <li class="nav-item">
-                <a class="nav-link" href="/generate-and-sort/page">Sort Algorithms</a>
-              </li>
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Sorting</h5>
+              <p class="card-text small text-muted mb-3">Compare performance of Sort Algoristhm with visualization.</p>
+              <a href="/generate-and-sort/page" class="btn btn-dark  btn-sm">Explore</a>
+            </div>
+          </div>
+        </div>
 
-              <li class="nav-item">
-                <a class="nav-link" href="/generate-and-search/page">Linear Search</a>
-              </li>
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Array Analysis</h5>
+              <p class="card-text small text-muted mb-3">Linear Search, Find Min/Max and Duplicate Checks algorithms.</p>
+              <a href="/generate-and-search/page" class="btn btn-dark btn-sm">Analyze</a>
+            </div>
+          </div>
+        </div>
 
-              <li class="nav-item">
-                <a class="nav-link" href="/linked-list/page">Linked List</a>
-              </li>
-            </ul>
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Linked List</h5>
+              <p class="card-text small text-muted mb-3">Basic implementation (insert end, display). More features coming soon!</p>
+              <a href="/linked-list/page" class="btn btn-secondary btn-sm">View (Dev)</a>
+            </div>
           </div>
         </div>
       </nav>
