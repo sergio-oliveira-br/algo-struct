@@ -41,6 +41,6 @@ public class GenerateAndSortController {
         Map<String, Long> executionTimes = sortingService.executeSortingAlgorithms(generatedNumbers, algorithm);
         model.addAttribute("executionTimes", executionTimes);
 
-        return "index";
+        return "sorting";
     }
 }
