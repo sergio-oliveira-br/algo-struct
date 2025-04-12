@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/linked-list")
-public class LinkedList {
+public class LinkedListController {
 
     @GetMapping("/page")
     public String showLinkedListPage() {
