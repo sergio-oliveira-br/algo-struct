@@ -31,10 +31,12 @@ As part of an ongoing commitment to professional growth, I am now expanding this
       
     * **Array Analysis:**
       * **Find Minimum and Maximum** Identifies and displays the smallest and largest elements within the generated array.
+      * **Check for Duplicates:** Determines if the generated array contains any duplicate elements.
 
 **In Development:**
-* **Array Analysis:**
-    * **Check for Duplicates:** Determines if the generated array contains any duplicate elements.
+* **Singly Linked List (Basic Operations):**
+    * Allow the user to insert integer values at the end of the linked list.
+    * Display the current contents of the linked list.
 
 
 **Upcoming Learning and Implementation Areas:**
