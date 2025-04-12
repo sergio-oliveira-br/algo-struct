@@ -26,6 +26,11 @@ public class GenerateAndSortController {
         this.sortingService = sortingService;
     }
 
+    @GetMapping("/page")
+    public String showSortingPage() {
+        return "sorting";
+    }
+
     @GetMapping
     public String GenerateAndSort(Model model,
                                   @RequestParam int qty,
