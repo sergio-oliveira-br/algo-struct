@@ -49,7 +49,10 @@ public class LinkedListController {
         else{
             insertAtBeginningService.insertElement(element);
         }
+
         model.addAttribute("myList", singlyLinkedListService.toString());
+        model.addAttribute("mySize",
+                "Size of the List: " + singlyLinkedListService.size());
         return "linked-list";
     }
 }
