@@ -1,7 +1,7 @@
 package com.github.sergiooliveirabr.algostruct.controller;
 
-import com.github.sergiooliveirabr.algostruct.service.linkedlist.InsertAtBeginningService;
-import com.github.sergiooliveirabr.algostruct.service.linkedlist.InserteAtEndService;
+import com.github.sergiooliveirabr.algostruct.service.linkedlist.insert.InsertAtBeginningService;
+import com.github.sergiooliveirabr.algostruct.service.linkedlist.insert.InserteAtEndService;
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.SinglyLinkedListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
 import java.util.Objects;
 
 @Controller

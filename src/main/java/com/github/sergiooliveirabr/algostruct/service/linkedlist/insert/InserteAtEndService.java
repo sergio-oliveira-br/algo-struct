@@ -1,5 +1,7 @@
-package com.github.sergiooliveirabr.algostruct.service.linkedlist;
+package com.github.sergiooliveirabr.algostruct.service.linkedlist.insert;
 
+import com.github.sergiooliveirabr.algostruct.service.linkedlist.Node;
+import com.github.sergiooliveirabr.algostruct.service.linkedlist.SinglyLinkedListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
