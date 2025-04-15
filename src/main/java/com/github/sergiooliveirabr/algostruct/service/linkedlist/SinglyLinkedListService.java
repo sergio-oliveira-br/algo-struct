@@ -17,6 +17,19 @@ public class SinglyLinkedListService<T> {
         return head == null;
     }
 
+    public int size(){
+
+        int count = 0;
+
+        if (!isEmpty()) {
+            for (Node current = head; current != null; current = current.next) {
+                count++;
+            }
+            return count;
+        }
+        return count;
+    }
+
     public Node<T> getHead() {
         return head;
     }
