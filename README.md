@@ -33,10 +33,15 @@ As part of an ongoing commitment to professional growth, I am now expanding this
       * **Find Minimum and Maximum** Identifies and displays the smallest and largest elements within the generated array.
       * **Check for Duplicates:** Determines if the generated array contains any duplicate elements.
 
+* **Singly Linked List (Basic Operations):**
+    * Allows the user to insert integer values at the end of the linked list.
+    * Allows the user to insert integer values at the beginning of the linked list.
+    * Displays the current contents of the linked list.
+
 **In Development:**
 * **Singly Linked List (Basic Operations):**
-    * Allow the user to insert integer values at the end of the linked list.
-    * Display the current contents of the linked list.
+    * Implementing the functionality that provides a count of the number of elements in the linked list.
+    * Implementing the functionality to delete the first node from the linked list.
 
 
 **Upcoming Learning and Implementation Areas:**
