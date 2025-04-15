@@ -3,7 +3,7 @@ package com.github.sergiooliveirabr.algostruct.service.linkedlist;
 public class Node <T> {
 
     T element;
-    Node next;
+    public Node next;
 
     public Node(T element, Node<T> next) {
         this.element = element;
