@@ -17,6 +17,21 @@ public class SinglyLinkedListService<T> {
         return head == null;
     }
 
+    public Node<T> getHead() {
+        return head;
+    }
+
+    public void setHead(Node<T> head) {
+        this.head = head;
+    }
+
+    public Node getTail() {
+        return tail;
+    }
+
+    public void setTail(Node tail) {
+        this.tail = tail;
+    }
 
     @Override
     public String toString() {
