@@ -1,5 +1,5 @@
 package com.github.sergiooliveirabr.algostruct.service.linkedlist.insert;
 
-public interface InsertElementInterface<T> {
+public interface InsertElementStrategy<T> {
     void insertElement(T value);
 }

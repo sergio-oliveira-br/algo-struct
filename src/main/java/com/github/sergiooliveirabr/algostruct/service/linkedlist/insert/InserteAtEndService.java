@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class InserteAtEndService<T> implements InsertElementInterface<T> {
+public class InserteAtEndService<T> implements InsertElementStrategy<T> {
 
     private final SinglyLinkedListService<T> singlyLinkedListService;
 
