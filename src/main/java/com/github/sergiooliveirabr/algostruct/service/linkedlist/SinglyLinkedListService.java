@@ -13,17 +13,6 @@ public class SinglyLinkedListService<T> {
         tail = null;
     }
 
-    public void insertAtEnd(T newElement) {
-        if(isEmpty()){
-            head = new Node<T>(newElement);
-            tail = head;
-        }
-        else{
-            tail.next = new Node<T>(newElement);
-            tail = tail.next;
-        }
-    }
-
     public boolean isEmpty() {
         return head == null;
     }
