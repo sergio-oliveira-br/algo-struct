@@ -54,7 +54,7 @@
                       <h5>Insert and Display</h5>
                       <p class="form-text text-muted">Enter a number and choose a choice to add it to the linked list.</p>
 
-                      <form th:action="@{/linked-list/insert}" method="post">
+                      <form class="card mt-3 p-2" th:action="@{/linked-list/insert}" method="post">
                           <div class="input-group mb-3">
                               <input type="number" class="form-control" placeholder="any number" aria-label="element" name="element">
                           </div>
@@ -77,15 +77,41 @@
                               </label>
                           </div>
 
-                          <button type="submit" class="btn btn-primary mt-3">Insert</button>
+                          <button type="submit" class="btn btn-dark mt-3">Insert</button>
 
                       </form>
+
+                      <div th:if="${myList} != null">
+                          <form class="card mt-3 p-2" th:action="@{/linked-list/delete-first-element}" method="post">
+
+                              <div class="form-check">
+                                  <input class="form-check-input" type="radio" name="index"
+                                         id="deleteFirstElement" value="1" checked>
+
+                                  <label class="form-check-label" for="deleteFirstElement">
+                                      Delete First Element
+                                  </label>
+                              </div>
+
+                              <div class="form-check">
+                                  <input class="form-check-input" type="radio" name="deleteAlgorithm"
+                                         id="" value="" disabled>
+
+                                  <label class="form-check-label" for="atEnd">
+                                      Other
+                                  </label>
+                              </div>
+
+                              <div class="mt-2">
+                                  <button type="submit" class="btn btn-secondary col-12">Delete</button>
+                              </div>
+                          </form>
+                      </div>
 
                       <div class="card mt-3">
                           <div class="card-body">
                               <h5>Output</h5>
                               <p th:text="${myList}"></p>
-
                               <p th:text="${mySize}"></p>
                           </div>
                       </div>
