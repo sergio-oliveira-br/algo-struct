@@ -38,7 +38,7 @@ public class LinkedListController {
     }
 
 
-    @PostMapping("/insert-at-end")
+    @PostMapping("/insert")
     public String insertAndDisplay(Model model,
                                    @RequestParam int element,
                                    @RequestParam String algorithm) {
