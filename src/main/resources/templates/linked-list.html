@@ -113,20 +113,45 @@
                                   <button type="submit" class="btn btn-secondary col-12">Delete</button>
                               </div>
                           </form>
-                      </div>
 
-                      <div class="card mt-3">
-                          <div class="card-body">
-                              <h5>Output</h5>
-                              <p th:text="${myList}"></p>
-                              <p th:text="${mySize}"></p>
+                          <div class="card mt-3">
+                              <div class="card-body">
+                                  <h5>Output</h5>
+                                  <p th:text="${myList}"></p>
+                                  <p th:text="${mySize}"></p>
+                              </div>
+                          </div>
+
+                          <div th:if="${myList} != null" class="card mt-3 p-2">
+                              <h5>Search</h5>
+
+                              <p class="text-muted">Verify if the value is present in the list.</p>
+
+                              <form class="p-2">
+                                  <div class="row">
+                                      <div class="col col-8">
+                                          <div class="input-group mb-3">
+                                              <input type="number" class="form-control" placeholder="number"
+                                                     id="findByValue">
+
+                                              <label class="form-check-label" for="findByValue"></label>
+                                          </div>
+                                      </div>
+                                      <div class="col">
+                                          <button type="submit" class="btn btn-primary">Search</button>
+                                      </div>
+                                  </div>
+                              </form>
+                              <div class="container d-inline-flex">
+                                  <p>Is the value included in the list?</p>
+                                  <p class="ms-2">True</p>
+                              </div>
+
                           </div>
                       </div>
-
                   </div>
               </div>
           </div>
       </main>
-
   </body>
 </html>
