@@ -1,6 +1,7 @@
 package com.github.sergiooliveirabr.algostruct.controller;
 
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.delete.DeleteFirstElementService;
+import com.github.sergiooliveirabr.algostruct.service.linkedlist.delete.DeleteLastElementService;
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.insert.InsertAtBeginningService;
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.insert.InserteAtEndService;
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.SinglyLinkedListService;
@@ -22,16 +23,20 @@ public class LinkedListController {
     private final InserteAtEndService<Integer> inserteAtEndService;
     private final InsertAtBeginningService<Integer> insertAtBeginningService;
     private final DeleteFirstElementService<Integer> deleteFirstElementService;
+    private final DeleteLastElementService<Integer> deleteLastElementService;
 
     @Autowired
     public LinkedListController(SinglyLinkedListService singlyLinkedListService,
                                 InserteAtEndService<Integer> inserteAtEndService,
-                                InsertAtBeginningService<Integer> insertAtBeginningService, DeleteFirstElementService<Integer> deleteFirstElementService) {
+                                InsertAtBeginningService<Integer> insertAtBeginningService,
+                                DeleteFirstElementService<Integer> deleteFirstElementService,
+                                DeleteLastElementService<Integer> deleteLastElementService) {
 
         this.singlyLinkedListService = singlyLinkedListService;
         this.inserteAtEndService = inserteAtEndService;
         this.insertAtBeginningService = insertAtBeginningService;
         this.deleteFirstElementService = deleteFirstElementService;
+        this.deleteLastElementService = deleteLastElementService;
     }
 
     @GetMapping("/page")
@@ -58,10 +63,16 @@ public class LinkedListController {
         return "linked-list";
     }
 
-    @PostMapping("/delete-first-element")
-    public String deleteFirstElement(Model model) {
+    @PostMapping("/delete")
+    public String deleteFirstElement(Model model,
+                                     @RequestParam String deleteAlgorithm) {
 
-        deleteFirstElementService.deleteElement();
+        if(deleteAlgorithm.equals("deleteFirstElement")){
+            deleteFirstElementService.deleteElement();
+        }
+        else{
+            deleteLastElementService.deleteElement();
+        }
 
         model.addAttribute("myList", singlyLinkedListService.toString());
         model.addAttribute("mySize",
