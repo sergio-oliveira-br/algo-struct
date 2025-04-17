@@ -82,11 +82,11 @@
                       </form>
 
                       <div th:if="${myList} != null">
-                          <form class="card mt-3 p-2" th:action="@{/linked-list/delete-first-element}" method="post">
+                          <form class="card mt-3 p-2" th:action="@{/linked-list/delete}" method="post">
 
                               <div class="form-check">
-                                  <input class="form-check-input" type="radio" name="index"
-                                         id="deleteFirstElement" value="1" checked>
+                                  <input class="form-check-input" type="radio" name="deleteAlgorithm"
+                                         id="deleteFirstElement" value="deleteFirstElement" checked>
 
                                   <label class="form-check-label" for="deleteFirstElement">
                                       Delete First Element
@@ -98,7 +98,7 @@
 
                               <div class="form-check">
                                   <input class="form-check-input" type="radio" name="deleteAlgorithm"
-                                         id="deleteLastElement" value="" disabled>
+                                         id="deleteLastElement" value="deleteLastElement">
 
                                   <label class="form-check-label" for="deleteLastElement">
                                       Delete the Last Element
