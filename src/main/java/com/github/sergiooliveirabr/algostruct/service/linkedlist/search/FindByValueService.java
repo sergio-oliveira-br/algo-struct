@@ -15,7 +15,7 @@ public class FindByValueService<T> {
         this.singlyLinkedListService = singlyLinkedListService;
     }
 
-    public boolean findByValeu(int value){
+    public boolean findByValue(int value){
 
         Node<T> head = singlyLinkedListService.getHead();
         Node currentNode = head;

@@ -88,7 +88,7 @@ public class LinkedListController {
     @PostMapping("/find")
     public String findByValue(Model model, @RequestParam int value) {
 
-        boolean searchResult = findByValueService.findByValeu(value);
+        boolean searchResult = findByValueService.findByValue(value);
 
         model.addAttribute("myList", singlyLinkedListService.toString());
         model.addAttribute("mySize",
