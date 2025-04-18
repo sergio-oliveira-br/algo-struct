@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
   <head>
       <meta charset="UTF-8">
       <meta name="description" content="Implements advanced algorithms and data structures/">
@@ -47,110 +47,125 @@
       </header>
 
       <main class="container-fluid">
-          <div class="col-12 col-md-6 col-lg-4 mt-3">
-              <div class="card">
-                  <h5 class="card-header">Linked List Simple</h5>
-                  <div class="card-body">
-                      <h5>Insert and Display</h5>
-                      <p class="form-text text-muted">Enter a number and choose a choice to add it to the linked list.</p>
-
-                      <form class="card mt-3 p-2" th:action="@{/linked-list/insert}" method="post">
-                          <div class="input-group mb-3">
-                              <input type="number" class="form-control" placeholder="any number" aria-label="element" name="element">
-                          </div>
-
-                          <div class="form-check">
-                              <input class="form-check-input" type="radio" name="algorithm"
-                                     id="atEnd" value="insertAtEndService" checked>
-
-                              <label class="form-check-label" for="atEnd">
-                                  Insert at End
-                              </label>
-                          </div>
-
-                          <div th:if="${myList} != null" class="form-check">
-                              <input class="form-check-input" type="radio" name="algorithm"
-                                     id="atBeginning" value="insertAtBeginning">
-
-                              <label class="form-check-label" for="atBeginning">
-                                  Insert at Biginning
-                              </label>
-                          </div>
-
-                          <button type="submit" class="btn btn-dark mt-3">Insert</button>
-
-                      </form>
-
-                      <div th:if="${myList} != null">
-                          <form class="card mt-3 p-2" th:action="@{/linked-list/delete}" method="post">
-
-                              <div class="form-check">
-                                  <input class="form-check-input" type="radio" name="deleteAlgorithm"
-                                         id="deleteFirstElement" value="deleteFirstElement" checked>
-
-                                  <label class="form-check-label" for="deleteFirstElement">
-                                      Delete First Element
-                                  </label>
-
-                                  <p class="form-text text-muted">This operation has the foundation of a Queue
-                                      (Fila - First-In, First-Out). The first element to enter is the first to exit.</p>
+          <div class="row">
+              <div class="col-12 col-md-6 col-lg-4 mt-3">
+                  <div class="card">
+                      <h5 class="card-header">Insert an Element</h5>
+                      <div class="card-body">
+                          <p class="form-text text-muted">Enter a number and choose an option to add it to the linked list.</p>
+                          <form class="mt-3 p-2" th:action="@{/linked-list/insert}" method="post">
+                              <div class="input-group mb-3">
+                                  <input type="number" class="form-control" placeholder="any number"
+                                         aria-label="element" name="element">
                               </div>
 
                               <div class="form-check">
-                                  <input class="form-check-input" type="radio" name="deleteAlgorithm"
-                                         id="deleteLastElement" value="deleteLastElement">
+                                  <input class="form-check-input" type="radio" name="algorithm"
+                                         id="atEnd" value="insertAtEndService" checked>
 
-                                  <label class="form-check-label" for="deleteLastElement">
-                                      Delete the Last Element
+                                  <label class="form-check-label" for="atEnd">
+                                      Insert at End
                                   </label>
-
-                                  <p class="form-text text-muted">This exclusion at the end addresses
-                                      the concept of a Stack (Stack - Last-In, First-Out).
-                                      The last element to enter is the first to exit</p>
                               </div>
 
-                              <div class="mt-2">
-                                  <button type="submit" class="btn btn-secondary col-12">Delete</button>
+                              <div th:if="${myList} != null" class="form-check">
+                                  <input class="form-check-input" type="radio" name="algorithm"
+                                         id="atBeginning" value="insertAtBeginning">
+
+                                  <label class="form-check-label" for="atBeginning">
+                                      Insert at Biginning
+                                  </label>
                               </div>
+                              <button type="submit" class="btn btn-dark col-12 mt-4" >Insert</button>
                           </form>
+                      </div> <!-- card body -->
+                  </div> <!-- card -->
+              </div> <!-- end of the insert card -->
 
-                          <div class="card mt-3">
-                              <div class="card-body">
-                                  <h5>Output</h5>
-                                  <p th:text="${myList}"></p>
-                                  <p th:text="${mySize}"></p>
-                              </div>
-                          </div>
+              <!-- Delete  -->
+              <div class="col-12 col-md-6 col-lg-4 mt-3">
+                  <div class="card">
+                      <h5 class="card-header">Delete an Element</h5>
+                      <div class="card-body">
+                          <div>
+                              <form class="p-1" th:action="@{/linked-list/delete}" method="post">
+                                  <div class="form-check">
+                                      <input class="form-check-input" type="radio" name="deleteAlgorithm"
+                                             id="deleteFirstElement" value="deleteFirstElement" checked>
 
-                          <div th:if="${myList} != null" class="card mt-3 p-2">
-                              <h5>Search</h5>
+                                      <label class="form-check-label" for="deleteFirstElement">
+                                          Delete First Element
+                                      </label>
 
+                                      <p class="form-text text-muted">This operation has the foundation of a Queue.
+                                          The first element to enter is the first to exit.</p>
+                                  </div>
+
+                                  <div class="form-check">
+                                      <input class="form-check-input" type="radio" name="deleteAlgorithm"
+                                             id="deleteLastElement" value="deleteLastElement">
+
+                                      <label class="form-check-label" for="deleteLastElement">
+                                          Delete the Last Element
+                                      </label>
+
+                                      <p class="form-text text-muted">This exclusion at the end addresses
+                                          the concept of a Stack.
+                                          The last element to enter is the first to exit</p>
+                                  </div>
+                                  <button th:if="${myList} != null" type="submit" class="btn btn-secondary col-12 m-1">Delete</button>
+                              </form>
+                          </div> <!-- thymeleaf -->
+                      </div> <!-- card body -->
+                  </div> <!-- card -->
+              </div> <!-- finished the linked list card  -->
+
+
+
+              <div class="col-12 col-md-6 col-lg-4 mt-3">
+                  <div class="card">
+                      <h5 class="card-header">Search for an Element</h5>
+                      <div class="card-body">
+                          <div>
                               <p class="text-muted">Verify if the value is present in the list.</p>
 
                               <form class="p-2" th:action="@{/linked-list/find}" method="post">
                                   <div class="row">
                                       <div class="col col-8">
-                                          <div class="input-group mb-3">
+                                          <div class="input-group mb-1">
                                               <input type="number" class="form-control" placeholder="number"
                                                      id="findByValue" name="value" required>
 
                                               <label class="form-check-label" for="findByValue"></label>
                                           </div>
                                       </div>
-                                      <div class="col">
-                                          <button type="submit" class="btn btn-primary">Search</button>
-                                      </div>
                                   </div>
+
+                                  <div class="container d-inline-flex mt-2">
+                                      <p>Is the value included in the list?</p>
+                                      <b class="ms-2" th:text="${searchResult}"></b>
+                                  </div>
+
+                                  <div class="container d-inline-flex">
+                                      <p>What value?</p>
+                                  </div>
+                                  <button th:if="${myList} != null" type="submit" class="btn btn-primary col-12">Search</button>
                               </form>
-                              <div class="container d-inline-flex">
-                                  <p>Is the value included in the list?</p>
-                                  <b class="ms-2" th:text="${searchResult}"></b>
-                              </div>
                           </div>
                       </div>
                   </div>
               </div>
-          </div>
+
+              <div class="col-12 col-md-6 col-lg-12 mt-3">
+                  <div class="card mt-3">
+                      <div class="card-body">
+                          <h5>Output</h5>
+                          <p th:text="${myList}"></p>
+                          <p th:text="${mySize}"></p>
+                      </div>
+                  </div>
+              </div><!-- output card -->
+          </div><!-- row -->
       </main>
   </body>
 </html>
