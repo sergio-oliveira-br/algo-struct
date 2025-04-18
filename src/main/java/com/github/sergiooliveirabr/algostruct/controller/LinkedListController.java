@@ -5,6 +5,7 @@ import com.github.sergiooliveirabr.algostruct.service.linkedlist.delete.DeleteLa
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.insert.InsertAtBeginningService;
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.insert.InserteAtEndService;
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.SinglyLinkedListService;
+import com.github.sergiooliveirabr.algostruct.service.linkedlist.search.FindByValueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,19 +25,22 @@ public class LinkedListController {
     private final InsertAtBeginningService<Integer> insertAtBeginningService;
     private final DeleteFirstElementService<Integer> deleteFirstElementService;
     private final DeleteLastElementService<Integer> deleteLastElementService;
+    private final FindByValueService<Integer> findByValueService;
 
     @Autowired
     public LinkedListController(SinglyLinkedListService singlyLinkedListService,
                                 InserteAtEndService<Integer> inserteAtEndService,
                                 InsertAtBeginningService<Integer> insertAtBeginningService,
                                 DeleteFirstElementService<Integer> deleteFirstElementService,
-                                DeleteLastElementService<Integer> deleteLastElementService) {
+                                DeleteLastElementService<Integer> deleteLastElementService,
+                                FindByValueService<Integer> findByValueService) {
 
         this.singlyLinkedListService = singlyLinkedListService;
         this.inserteAtEndService = inserteAtEndService;
         this.insertAtBeginningService = insertAtBeginningService;
         this.deleteFirstElementService = deleteFirstElementService;
         this.deleteLastElementService = deleteLastElementService;
+        this.findByValueService = findByValueService;
     }
 
     @GetMapping("/page")
@@ -78,6 +82,18 @@ public class LinkedListController {
         model.addAttribute("mySize",
                 "Size of the List: " + singlyLinkedListService.size());
 
+        return "linked-list";
+    }
+
+    @PostMapping("/find")
+    public String findByValue(Model model, @RequestParam int value) {
+
+        boolean searchResult = findByValueService.findByValeu(value);
+
+        model.addAttribute("myList", singlyLinkedListService.toString());
+        model.addAttribute("mySize",
+                "Size of the List: " + singlyLinkedListService.size());
+        model.addAttribute("searchResult", searchResult);
         return "linked-list";
     }
 }
