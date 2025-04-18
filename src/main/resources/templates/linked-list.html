@@ -127,12 +127,12 @@
 
                               <p class="text-muted">Verify if the value is present in the list.</p>
 
-                              <form class="p-2">
+                              <form class="p-2" th:action="@{/linked-list/find}" method="post">
                                   <div class="row">
                                       <div class="col col-8">
                                           <div class="input-group mb-3">
                                               <input type="number" class="form-control" placeholder="number"
-                                                     id="findByValue">
+                                                     id="findByValue" name="value" required>
 
                                               <label class="form-check-label" for="findByValue"></label>
                                           </div>
@@ -144,9 +144,8 @@
                               </form>
                               <div class="container d-inline-flex">
                                   <p>Is the value included in the list?</p>
-                                  <p class="ms-2">True</p>
+                                  <b class="ms-2" th:text="${searchResult}"></b>
                               </div>
-
                           </div>
                       </div>
                   </div>
