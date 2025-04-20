@@ -6,12 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class FindByValueService<T> {
+public class FindValueService<T> {
 
     private final SinglyLinkedListService<T> singlyLinkedListService;
 
     @Autowired
-    public FindByValueService(SinglyLinkedListService<T> singlyLinkedListService) {
+    public FindValueService(SinglyLinkedListService<T> singlyLinkedListService) {
         this.singlyLinkedListService = singlyLinkedListService;
     }
 
