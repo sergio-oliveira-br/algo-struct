@@ -3,6 +3,7 @@ package com.github.sergiooliveirabr.algostruct.controller;
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.delete.DeleteFirstElementService;
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.delete.DeleteLastElementService;
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.insert.InsertAtBeginningService;
+import com.github.sergiooliveirabr.algostruct.service.linkedlist.insert.InsertAtGivenIndexService;
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.insert.InserteAtEndService;
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.SinglyLinkedListService;
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.search.FindNodeService;
@@ -28,6 +29,7 @@ public class LinkedListController {
     private final DeleteLastElementService<Integer> deleteLastElementService;
     private final FindValueService<Integer> findValueService;
     private final FindNodeService<Integer> findNodeService;
+    private final InsertAtGivenIndexService<Integer> insertAtGivenIndexService;
 
     @Autowired
     public LinkedListController(SinglyLinkedListService singlyLinkedListService,
@@ -36,7 +38,8 @@ public class LinkedListController {
                                 DeleteFirstElementService<Integer> deleteFirstElementService,
                                 DeleteLastElementService<Integer> deleteLastElementService,
                                 FindValueService<Integer> findValueService,
-                                FindNodeService<Integer> findNodeService) {
+                                FindNodeService<Integer> findNodeService,
+                                InsertAtGivenIndexService<Integer> insertAtGivenIndexService) {
 
         this.singlyLinkedListService = singlyLinkedListService;
         this.inserteAtEndService = inserteAtEndService;
@@ -45,6 +48,7 @@ public class LinkedListController {
         this.deleteLastElementService = deleteLastElementService;
         this.findValueService = findValueService;
         this.findNodeService = findNodeService;
+        this.insertAtGivenIndexService = insertAtGivenIndexService;
     }
 
     @GetMapping("/page")
@@ -106,4 +110,20 @@ public class LinkedListController {
         model.addAttribute("node", "Searching for Node " + value);
         return "linked-list";
     }
+
+    @PostMapping("/insert-at-given-index")
+    public String insertAtGivenIndex(Model model,
+                                     @RequestParam int indexNode,
+                                     @RequestParam int nodeElement) {
+
+        System.out.println("Controller Accessed: nodeNumber is " + nodeElement + ", indexNode is " + indexNode);
+        insertAtGivenIndexService.InsertAtGivenIndex(indexNode, nodeElement);
+
+        model.addAttribute("myList", singlyLinkedListService.toString());
+        model.addAttribute("mySize", "Size of the List: " + singlyLinkedListService.size());
+        model.addAttribute("nodeElementAtIndex", "Inserting the element " + nodeElement + " at index " + indexNode);
+
+        return "linked-list";
+    }
+
 }
