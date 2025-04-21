@@ -23,7 +23,7 @@ public class FindNodeService<T> {
         while (current != null) {
 
             if(current.getElement().equals(value)) {
-                return current;
+                return current.next;
             }
             current = current.next;
         }
