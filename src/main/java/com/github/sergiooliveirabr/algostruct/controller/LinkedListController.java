@@ -102,7 +102,8 @@ public class LinkedListController {
         model.addAttribute("mySize",
                 "Size of the List: " + singlyLinkedListService.size());
         model.addAttribute("searchResult", searchResult);
-        model.addAttribute("node", findNodeService.findNode(value));
+        model.addAttribute("nextNode", findNodeService.findNode(value));
+        model.addAttribute("node", "Searching for Node " + value);
         return "linked-list";
     }
 }
