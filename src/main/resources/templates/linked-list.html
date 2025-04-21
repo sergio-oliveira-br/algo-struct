@@ -161,17 +161,24 @@
                   <div class="card">
                       <h5 class="card-header">Insert in a Specific Position (by Index)</h5>
                       <div class="card-body">
-                          <p class="text-multed">This method should insert a new Node
+                          
+                          <p>This method should insert a new Node
                               with the given element at the position specified by index.</p>
-                                     id="newNode">
-                          </div>
 
-                          <div class="input-group mb-1 row">
-                              <label for="newNodePosition" class="form-check-label col-6">Give the location</label>
-                              <input type="number" class="form-control col-6" placeholder="index"
-                                     id="newNodePosition">
-                          </div>
-                          <button type="submit" class="btn btn-outline-dark col-12 mt-2">Submit</button>
+                          <form>
+                              <div class="input-group mb-1 row">
+                                  <label class="form-check-label col-6" for="newNode">Enter a number</label>
+                                  <input type="number" class="form-control col-6" placeholder="number"
+                                         id="newNode">
+                              </div>
+
+                              <div class="input-group mb-1 row">
+                                  <label for="newNodePosition" class="form-check-label col-6">Give the location</label>
+                                  <input type="number" class="form-control col-6" placeholder="index"
+                                         id="newNodePosition">
+                              </div>
+                              <button type="submit" class="btn btn-outline-dark col-12 mt-2">Submit</button>
+                          </form>
                       </div>
                   </div>
               </div>
