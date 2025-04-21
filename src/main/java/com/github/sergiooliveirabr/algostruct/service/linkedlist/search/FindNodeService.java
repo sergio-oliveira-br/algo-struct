@@ -15,7 +15,7 @@ public class FindNodeService<T> {
         this.singlyLinkedListService = singlyLinkedListService;
     }
 
-    public Node<T> findNode(int value) {
+    public Node<T> findNextNode(int value) {
 
         Node<T> head = singlyLinkedListService.getHead();
         Node<T> current = head;

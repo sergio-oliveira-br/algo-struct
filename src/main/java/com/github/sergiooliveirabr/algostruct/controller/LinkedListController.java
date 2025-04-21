@@ -95,14 +95,14 @@ public class LinkedListController {
         boolean searchResult = findValueService.findByValue(value);
 
         if (searchResult) {
-            findNodeService.findNode(value);
+            findNodeService.findNextNode(value);
         }
 
         model.addAttribute("myList", singlyLinkedListService.toString());
         model.addAttribute("mySize",
                 "Size of the List: " + singlyLinkedListService.size());
         model.addAttribute("searchResult", searchResult);
-        model.addAttribute("nextNode", findNodeService.findNode(value));
+        model.addAttribute("nextNode", findNodeService.findNextNode(value));
         model.addAttribute("node", "Searching for Node " + value);
         return "linked-list";
     }
