@@ -161,21 +161,20 @@
                   <div class="card">
                       <h5 class="card-header">Insert in a Specific Position (by Index)</h5>
                       <div class="card-body">
-                          
                           <p>This method should insert a new Node
                               with the given element at the position specified by index.</p>
 
-                          <form>
+                          <form th:action="@{/linked-list/insert-at-given-index}" method="post">
                               <div class="input-group mb-1 row">
                                   <label class="form-check-label col-6" for="newNode">Enter a number</label>
-                                  <input type="number" class="form-control col-6" placeholder="number"
-                                         id="newNode">
+                                  <input type="number" class="form-control col-6" placeholder="Element Number"
+                                         id="newNode" name="nodeElement">
                               </div>
 
                               <div class="input-group mb-1 row">
                                   <label for="newNodePosition" class="form-check-label col-6">Give the location</label>
-                                  <input type="number" class="form-control col-6" placeholder="index"
-                                         id="newNodePosition">
+                                  <input type="number" class="form-control col-6" placeholder="Index"
+                                         id="newNodePosition" name="indexNode">
                               </div>
                               <button type="submit" class="btn btn-outline-dark col-12 mt-2">Submit</button>
                           </form>
@@ -210,6 +209,7 @@
                           <p th:text="${myList}"></p>
                           <p th:text="${mySize}"></p>
                           <p th:text="${node}"></p>
+                          <p th:text="${nodeElementAtIndex}"></p>
                       </div>
                   </div>
               </div><!-- output card -->
