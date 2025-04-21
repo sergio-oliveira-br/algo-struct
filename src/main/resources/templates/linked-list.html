@@ -147,8 +147,8 @@
                                   </div>
 
                                   <div class="container d-inline-flex">
-                                      <p>What value?</p>
-                                      <b class="ms-2" th:text="${node}"></b>
+                                      <p>What is the next node?</p>
+                                      <b class="ms-2" th:text="${nextNode}"></b>
                                   </div>
                                   <button th:if="${myList} != null" type="submit" class="btn btn-primary col-12">Search</button>
                               </form>
@@ -163,6 +163,7 @@
                           <h5>Output</h5>
                           <p th:text="${myList}"></p>
                           <p th:text="${mySize}"></p>
+                          <p th:text="${node}"></p>
                       </div>
                   </div>
               </div><!-- output card -->
