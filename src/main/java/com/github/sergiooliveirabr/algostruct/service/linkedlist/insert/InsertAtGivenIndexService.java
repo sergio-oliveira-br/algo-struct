@@ -41,7 +41,6 @@ public class InsertAtGivenIndexService<T> {
             for (int i = 0; i < index; i++) {
                 previous = current;
                 current = current.next;
-                System.out.println("current.getElement() FOR --> " + current);
             }
             newNode.next = current;
             previous.next = newNode;

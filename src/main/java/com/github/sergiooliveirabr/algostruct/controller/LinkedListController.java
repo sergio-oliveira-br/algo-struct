@@ -116,7 +116,6 @@ public class LinkedListController {
                                      @RequestParam int indexNode,
                                      @RequestParam int nodeElement) {
 
-        System.out.println("Controller Accessed: nodeNumber is " + nodeElement + ", indexNode is " + indexNode);
         insertAtGivenIndexService.InsertAtGivenIndex(indexNode, nodeElement);
 
         model.addAttribute("myList", singlyLinkedListService.toString());
