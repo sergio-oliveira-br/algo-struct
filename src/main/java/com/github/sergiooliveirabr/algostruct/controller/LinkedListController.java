@@ -1,5 +1,6 @@
 package com.github.sergiooliveirabr.algostruct.controller;
 
+import com.github.sergiooliveirabr.algostruct.service.linkedlist.delete.DeleteAtGivenIndexService;
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.delete.DeleteFirstElementService;
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.delete.DeleteLastElementService;
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.insert.InsertAtBeginningService;
@@ -22,7 +23,7 @@ import java.util.Objects;
 @RequestMapping("/linked-list")
 public class LinkedListController {
 
-    private final SinglyLinkedListService singlyLinkedListService;
+    private final SinglyLinkedListService<Integer> singlyLinkedListService;
     private final InserteAtEndService<Integer> inserteAtEndService;
     private final InsertAtBeginningService<Integer> insertAtBeginningService;
     private final DeleteFirstElementService<Integer> deleteFirstElementService;
@@ -30,16 +31,18 @@ public class LinkedListController {
     private final FindValueService<Integer> findValueService;
     private final FindNodeService<Integer> findNodeService;
     private final InsertAtGivenIndexService<Integer> insertAtGivenIndexService;
+    private final DeleteAtGivenIndexService<Integer> deleteAtGivenIndexService;
 
     @Autowired
-    public LinkedListController(SinglyLinkedListService singlyLinkedListService,
+    public LinkedListController(SinglyLinkedListService<Integer> singlyLinkedListService,
                                 InserteAtEndService<Integer> inserteAtEndService,
                                 InsertAtBeginningService<Integer> insertAtBeginningService,
                                 DeleteFirstElementService<Integer> deleteFirstElementService,
                                 DeleteLastElementService<Integer> deleteLastElementService,
                                 FindValueService<Integer> findValueService,
                                 FindNodeService<Integer> findNodeService,
-                                InsertAtGivenIndexService<Integer> insertAtGivenIndexService) {
+                                InsertAtGivenIndexService<Integer> insertAtGivenIndexService,
+                                DeleteAtGivenIndexService<Integer> deleteAtGivenIndexService) {
 
         this.singlyLinkedListService = singlyLinkedListService;
         this.inserteAtEndService = inserteAtEndService;
@@ -49,6 +52,7 @@ public class LinkedListController {
         this.findValueService = findValueService;
         this.findNodeService = findNodeService;
         this.insertAtGivenIndexService = insertAtGivenIndexService;
+        this.deleteAtGivenIndexService = deleteAtGivenIndexService;
     }
 
     @GetMapping("/page")
@@ -125,4 +129,16 @@ public class LinkedListController {
         return "linked-list";
     }
 
+    @PostMapping("/delete-at-given-index")
+    public String deleteAtGivenIndex(Model model,
+                                     @RequestParam int indexNode) {
+
+        deleteAtGivenIndexService.deleteAtGivenIndex(indexNode);
+
+        model.addAttribute("myList", singlyLinkedListService.toString());
+        model.addAttribute("mySize", "Size of the List: " + singlyLinkedListService.size());
+        model.addAttribute("nodeElementAtIndex", "Deleting the element at index " + indexNode);
+
+        return "linked-list";
+    }
 }
