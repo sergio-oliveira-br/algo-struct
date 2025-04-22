@@ -186,9 +186,20 @@
               <div class="col-12 col-md-6 col-lg-4 mt-3">
                   <div class="card">
                       <h5 class="card-header">Delete in a Specific Position (by index)</h5>
+
                       <div class="card-body">
-                          <p class="text-muted">This method, just like index insertion,
+                          <p class="mb-3">This method, just like index insertion,
                               will locate the node before the index to be deleted and modify the pointers.</p>
+
+                          <form th:action="@{/linked-list/delete-at-given-index}" method="post">
+                              <div class="input-group">
+                                  <label for="deleteNodePosition" class="form-check-label col-12" >Enter the position that you wish to eliminate</label>
+                                  <input type="number" class="form-control col-12 mt-2" placeholder="Index"
+                                         id="deleteNodePosition" name="indexNode">
+                              </div>
+                              <p class="fst-italic text-center text-muted py-2">Remember that the first element is at the zero position</p>
+                              <button type="submit" class="btn btn-outline-danger col-12">Delete</button>
+                          </form>
                       </div>
                   </div>
               </div>
