@@ -7,6 +7,7 @@ import com.github.sergiooliveirabr.algostruct.service.linkedlist.insert.InsertAt
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.insert.InsertAtGivenIndexService;
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.insert.InserteAtEndService;
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.SinglyLinkedListService;
+import com.github.sergiooliveirabr.algostruct.service.linkedlist.reverse.ReverseListService;
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.search.FindNodeService;
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.search.FindValueService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,7 @@ public class LinkedListController {
     private final FindNodeService<Integer> findNodeService;
     private final InsertAtGivenIndexService<Integer> insertAtGivenIndexService;
     private final DeleteAtGivenIndexService<Integer> deleteAtGivenIndexService;
+    private final ReverseListService<Integer> reverseListService;
 
     @Autowired
     public LinkedListController(SinglyLinkedListService<Integer> singlyLinkedListService,
@@ -42,7 +44,8 @@ public class LinkedListController {
                                 FindValueService<Integer> findValueService,
                                 FindNodeService<Integer> findNodeService,
                                 InsertAtGivenIndexService<Integer> insertAtGivenIndexService,
-                                DeleteAtGivenIndexService<Integer> deleteAtGivenIndexService) {
+                                DeleteAtGivenIndexService<Integer> deleteAtGivenIndexService,
+                                ReverseListService<Integer> reverseListService) {
 
         this.singlyLinkedListService = singlyLinkedListService;
         this.inserteAtEndService = inserteAtEndService;
@@ -53,6 +56,7 @@ public class LinkedListController {
         this.findNodeService = findNodeService;
         this.insertAtGivenIndexService = insertAtGivenIndexService;
         this.deleteAtGivenIndexService = deleteAtGivenIndexService;
+        this.reverseListService = reverseListService;
     }
 
     @GetMapping("/page")
@@ -138,6 +142,17 @@ public class LinkedListController {
         model.addAttribute("myList", singlyLinkedListService.toString());
         model.addAttribute("mySize", "Size of the List: " + singlyLinkedListService.size());
         model.addAttribute("nodeElementAtIndex", "Deleting the element at index " + indexNode);
+
+        return "linked-list";
+    }
+
+    @GetMapping("/reverse-list")
+    public String reverseList(Model model) {
+        reverseListService.reverseList();
+
+        model.addAttribute("myList", singlyLinkedListService.toString());
+        model.addAttribute("mySize", "Size of the List: " + singlyLinkedListService.size());
+        model.addAttribute("nodeElementAtIndex", "Reversed list");
 
         return "linked-list";
     }
