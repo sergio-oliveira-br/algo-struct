@@ -20,12 +20,10 @@ public class ReverseListService<T> {
     public void reverseList() {
 
         Node<T> head = singlyLinkedListService.getHead();
-        Node<T> tail = singlyLinkedListService.getTail();
         Node<T> current = head;
         Node<T> previous = null;
         Node<T> tempNextNode = null;
-
-        SinglyLinkedListService<T> newListReversed = new SinglyLinkedListService<>();
+        
         int listSize = singlyLinkedListService.size();
 
         if(listSize == 0) {
@@ -42,10 +40,6 @@ public class ReverseListService<T> {
                 current.next = previous;
                 previous = current;
                 current = tempNextNode;
-
-                System.out.println("previous: " + previous);
-                System.out.println("current: " + current);
-                System.out.println("tempNextNode: " + tempNextNode);
             }
             singlyLinkedListService.setHead(previous);
         }
