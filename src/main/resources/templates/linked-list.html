@@ -213,7 +213,8 @@
 
                           <div class="card m-2 p-3">
                               <p>Your List Reversed:</p>
-                              <p>An Exemple</p>
+                              <p th:if="${nodeElementAtIndex} != 'Reversed list' " class="m-2 p-1"></p>
+                              <p th:text="${reversedList}"></p>
                           </div>
 
                           <form th:action="@{/linked-list/reverse-list}">
