@@ -151,6 +151,7 @@ public class LinkedListController {
         reverseListService.reverseList();
 
         model.addAttribute("myList", singlyLinkedListService.toString());
+        model.addAttribute("reversedList", singlyLinkedListService.toString());
         model.addAttribute("mySize", "Size of the List: " + singlyLinkedListService.size());
         model.addAttribute("nodeElementAtIndex", "Reversed list");
 
