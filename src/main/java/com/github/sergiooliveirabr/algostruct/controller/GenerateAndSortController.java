@@ -34,17 +34,19 @@ public class GenerateAndSortController {
     @GetMapping
     public String GenerateAndSort(Model model,
                                   @RequestParam int qty,
-                                  @RequestParam List<String> algorithm) {
+                                  @RequestParam (required = false) List<String> algorithm) {
 
-        System.out.println("[Controller] - User Selected - Algorithm: " + algorithm);
+        if (algorithm == null || algorithm.isEmpty()) {
+            model.addAttribute("errorMessage", "Pick one algorithm to sort your data");
+            return "sorting";
+        }
 
-        //Generate Random Nums
         int[] generatedNumbers = randomNumService.generateRandomNum(qty);
+        Map<String, Long> executionTimes = sortingService.executeSortingAlgorithms(generatedNumbers, algorithm);
+
+        model.addAttribute("executionTimes", executionTimes);
         model.addAttribute("randomNumbers", Arrays.toString(generatedNumbers));
         model.addAttribute("qty", "Amount of Data: " + qty);
-
-        Map<String, Long> executionTimes = sortingService.executeSortingAlgorithms(generatedNumbers, algorithm);
-        model.addAttribute("executionTimes", executionTimes);
 
         return "sorting";
     }
