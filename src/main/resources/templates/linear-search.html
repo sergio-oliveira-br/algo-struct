@@ -108,15 +108,15 @@
                                  for didactic purposes.</p>
 
                                 <div class="input-group mb-3">
-                                    <input type="number" class="form-control"
-                                           placeholder="Qty of Numbers" aria-label="numbers" name="arraySize">
+                                    <input type="number" class="form-control" placeholder="Qty of Numbers"
+                                            aria-label="numbers" name="arraySize" min="1" max="20" required>
                                 </div>
 
                                 <p class="card-text">Select what you whant to find</p>
 
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox"
-                                            id="minValue" name="findMinMaxAlgorithm" value="findMinService">
+                                    <input class="form-check-input" type="radio"
+                                            id="minValue" name="findMinMaxAlgorithm" value="findMinService" checked>
 
                                     <label class="form-check-label" for="minValue">
                                         Minimum Value
@@ -124,7 +124,7 @@
                                 </div>
 
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox"
+                                    <input class="form-check-input" type="radio"
                                            id="maxValue" name="findMinMaxAlgorithm" value="findMaxService">
 
                                     <label class="form-check-label" for="maxValue">
