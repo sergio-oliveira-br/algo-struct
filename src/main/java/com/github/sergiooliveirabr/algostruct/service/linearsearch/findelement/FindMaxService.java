@@ -1,4 +1,4 @@
-package com.github.sergiooliveirabr.algostruct.service.findelement;
+package com.github.sergiooliveirabr.algostruct.service.linearsearch.findelement;
 
 import org.springframework.stereotype.Service;
 

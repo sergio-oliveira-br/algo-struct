@@ -1,7 +1,7 @@
 package com.github.sergiooliveirabr.algostruct.controller;
 
-import com.github.sergiooliveirabr.algostruct.service.duplicatecheck.DuplicateCheckService;
-import com.github.sergiooliveirabr.algostruct.service.findelement.FindMinMaxService;
+import com.github.sergiooliveirabr.algostruct.service.linearsearch.duplicatecheck.DuplicateCheckService;
+import com.github.sergiooliveirabr.algostruct.service.linearsearch.findelement.FindMinMaxService;
 import com.github.sergiooliveirabr.algostruct.service.generator.RandomNumService;
 import com.github.sergiooliveirabr.algostruct.service.linearsearch.LinearSearchService;
 import org.springframework.beans.factory.annotation.Autowired;

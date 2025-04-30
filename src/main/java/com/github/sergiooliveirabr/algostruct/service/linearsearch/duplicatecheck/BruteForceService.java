@@ -1,4 +1,4 @@
-package com.github.sergiooliveirabr.algostruct.service.duplicatecheck;
+package com.github.sergiooliveirabr.algostruct.service.linearsearch.duplicatecheck;
 
 import org.springframework.stereotype.Service;
 
