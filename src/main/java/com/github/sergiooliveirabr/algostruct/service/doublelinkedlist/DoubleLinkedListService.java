@@ -33,4 +33,18 @@ public class DoubleLinkedListService<T> {
         }
         return list;
     }
+
+    public int size() {
+
+        int length = 0;
+        NodeDLL<T> current = headDLL;
+
+        if (!isEmpty()) {
+            while (current != null) {
+                current = current.getNext();
+                length++;
+            }
+        }
+        return length;
+    }
 }
