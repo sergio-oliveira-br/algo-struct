@@ -212,18 +212,14 @@
                   <div class="card">
                       <h5 class="card-header">Manipulation/Transformation</h5>
                       <div class="card-body">
-                          <p class="text-muted">The order of the list will be reversed
+                          <p class="text-muted mb-5">The order of the list will be reversed
                               by changing the next pointers of each node.</p>
 
-                          <div class="card m-2 p-3">
-                              <p>Your List Reversed:</p>
-                              <p th:if="${nodeElementAtIndex} != 'Reversed list' " class="m-2 p-1"></p>
-                              <p th:text="${reversedList}"></p>
-                          </div>
+                          <p class="text-muted mb-3">Check your output section</p>
 
                           <form th:action="@{/linked-list/reverse-list}">
                               <button
-                                  type="submit" class="btn btn-outline-success col-12 mt-1">Reverse Your List
+                                  type="submit" class="btn btn-outline-success col-12 mt-5">Reverse Your List
                               </button>
                           </form>
                       </div>
