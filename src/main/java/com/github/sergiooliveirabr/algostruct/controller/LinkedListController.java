@@ -60,14 +60,17 @@ public class LinkedListController {
     }
 
     @GetMapping("/page")
-    public String showLinkedListPage() {
+    public String showLinkedListPage(Model model) {
+
+        model.addAttribute("myList", singlyLinkedListService.toString());
+        model.addAttribute("mySize",
+                "Size of the List: " + singlyLinkedListService.size());
         return "linked-list";
     }
 
 
     @PostMapping("/insert")
-    public String insertAndDisplay(Model model,
-                                   @RequestParam int element,
+    public String insertAndDisplay(@RequestParam int element,
                                    @RequestParam String algorithm) {
 
         if(Objects.equals(algorithm, "insertAtEndService")){
@@ -76,11 +79,7 @@ public class LinkedListController {
         else{
             insertAtBeginningService.insertElement(element);
         }
-
-        model.addAttribute("myList", singlyLinkedListService.toString());
-        model.addAttribute("mySize",
-                "Size of the List: " + singlyLinkedListService.size());
-        return "linked-list";
+        return "redirect:/linked-list/page";
     }
 
     @PostMapping("/delete")
