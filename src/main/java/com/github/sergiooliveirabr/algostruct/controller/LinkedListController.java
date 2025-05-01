@@ -83,8 +83,7 @@ public class LinkedListController {
     }
 
     @PostMapping("/delete")
-    public String deleteFirstElement(Model model,
-                                     @RequestParam String deleteAlgorithm) {
+    public String deleteFirstElement(@RequestParam String deleteAlgorithm) {
 
         if(deleteAlgorithm.equals("deleteFirstElement")){
             deleteFirstElementService.deleteElement();
@@ -92,12 +91,7 @@ public class LinkedListController {
         else{
             deleteLastElementService.deleteElement();
         }
-
-        model.addAttribute("myList", singlyLinkedListService.toString());
-        model.addAttribute("mySize",
-                "Size of the List: " + singlyLinkedListService.size());
-
-        return "linked-list";
+        return "redirect:/linked-list/page";
     }
 
     @PostMapping("/find")
