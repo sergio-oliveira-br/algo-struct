@@ -1,8 +1,12 @@
 package com.github.sergiooliveirabr.algostruct.service.linkedlist;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.stereotype.Service;
 
 @Service
+@Getter
+@Setter
 public class SinglyLinkedListService<T> {
 
     private Node<T> head;
@@ -25,23 +29,7 @@ public class SinglyLinkedListService<T> {
         }
         return count;
     }
-
-    public Node<T> getHead() {
-        return head;
-    }
-
-    public void setHead(Node<T> head) {
-        this.head = head;
-    }
-
-    public Node getTail() {
-        return tail;
-    }
-
-    public void setTail(Node tail) {
-        this.tail = tail;
-    }
-
+    
     @Override
     public String toString() {
 
