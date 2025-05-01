@@ -2,13 +2,16 @@ package com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.insert;
 
 import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.DoubleLinkedListService;
 import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.NodeDLL;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class InsertAtEndDLLStrategy<T> implements InsertElementDLLStrategy<T> {
 
     private DoubleLinkedListService<T> doubleLinkedListService;
 
-
-    public InsertAtEndDLLStrategy(DoubleLinkedListService<T>  doubleLinkedListService){
+    @Autowired
+    public InsertAtEndDLLStrategy(DoubleLinkedListService<T> doubleLinkedListService){
         this.doubleLinkedListService = doubleLinkedListService;
     }
 
