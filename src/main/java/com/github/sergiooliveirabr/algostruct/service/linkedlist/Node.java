@@ -1,5 +1,10 @@
 package com.github.sergiooliveirabr.algostruct.service.linkedlist;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Node <T> {
 
     T element;
@@ -12,22 +17,6 @@ public class Node <T> {
 
     public Node(T element) {
         this(element, null);
-    }
-
-    public T getElement() {
-        return element;
-    }
-
-    public void setElement(T element) {
-        this.element = element;
-    }
-
-    public Node getNext() {
-        return next;
-    }
-
-    public void setNext(Node next) {
-        this.next = next;
     }
 
     @Override
