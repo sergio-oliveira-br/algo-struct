@@ -15,7 +15,7 @@ public class DoubleLinkedListService<T> {
         this.tailDLL = null;
     }
 
-   public boolean isEmpty() {
+    public boolean isEmpty() {
        return headDLL == null;
     }
 }
