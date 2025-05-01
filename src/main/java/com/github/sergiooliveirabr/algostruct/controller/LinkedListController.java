@@ -151,14 +151,12 @@ public class LinkedListController {
     }
 
     @GetMapping("/reverse-list")
-    public String reverseList(Model model) {
+    public String reverseList(RedirectAttributes redirectAttributes) {
         reverseListService.reverseList();
 
-        model.addAttribute("myList", singlyLinkedListService.toString());
-        model.addAttribute("reversedList", singlyLinkedListService.toString());
-        model.addAttribute("mySize", "Size of the List: " + singlyLinkedListService.size());
-        model.addAttribute("nodeElementAtIndex", "Reversed list");
+        //This will send the info to view according the PRG Pattern
+        redirectAttributes.addFlashAttribute("nodeElementAtIndex", "Reversed list");
 
-        return "linked-list";
+        return "redirect:/linked-list/page";
     }
 }
