@@ -63,6 +63,7 @@ public class LinkedListController {
         model.addAttribute("myList", singlyLinkedListService.toString());
         model.addAttribute("mySize", "Size of the List: " + singlyLinkedListService.size());
 
+
         //This is related to Search for an Element
         if(model.containsAttribute("value")) {
 
@@ -72,6 +73,13 @@ public class LinkedListController {
             model.addAttribute("searchResult", searchResult);
             model.addAttribute("nextNode", findNodeService.findNextNode(value));
             model.addAttribute("node", "Searching for Node " + value);
+        }
+
+        //This is related to Insert At Given Index
+        else if (model.containsAttribute("nodeElementAtIndex")) {
+            
+            String message = (String) model.getAttribute("nodeElementAtIndex");
+            model.addAttribute("nodeElementAtIndex", message);
         }
 
         return "linked-list";
@@ -116,17 +124,17 @@ public class LinkedListController {
     }
 
     @PostMapping("/insert-at-given-index")
-    public String insertAtGivenIndex(Model model,
+    public String insertAtGivenIndex(RedirectAttributes redirectAttributes,
                                      @RequestParam int indexNode,
                                      @RequestParam int nodeElement) {
 
         insertAtGivenIndexService.InsertAtGivenIndex(indexNode, nodeElement);
 
-        model.addAttribute("myList", singlyLinkedListService.toString());
-        model.addAttribute("mySize", "Size of the List: " + singlyLinkedListService.size());
-        model.addAttribute("nodeElementAtIndex", "Inserting the element " + nodeElement + " at index " + indexNode);
+        //This will send the info to view according the PRG Pattern
+        redirectAttributes.addFlashAttribute("nodeElementAtIndex",
+                "Inserting the element " + nodeElement + " at index " + indexNode);
 
-        return "linked-list";
+        return "redirect:/linked-list/page";
     }
 
     @PostMapping("/delete-at-given-index")
