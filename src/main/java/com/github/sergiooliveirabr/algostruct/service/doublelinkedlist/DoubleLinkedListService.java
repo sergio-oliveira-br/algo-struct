@@ -1,8 +1,10 @@
 package com.github.sergiooliveirabr.algostruct.service.doublelinkedlist;
 
 import lombok.Data;
+import org.springframework.stereotype.Service;
 
 @Data
+@Service
 public class DoubleLinkedListService<T> {
 
     NodeDLL<T> headDLL;
