@@ -77,7 +77,7 @@ public class LinkedListController {
 
         //This is related to Insert At Given Index
         else if (model.containsAttribute("nodeElementAtIndex")) {
-            
+
             String message = (String) model.getAttribute("nodeElementAtIndex");
             model.addAttribute("nodeElementAtIndex", message);
         }
@@ -138,16 +138,16 @@ public class LinkedListController {
     }
 
     @PostMapping("/delete-at-given-index")
-    public String deleteAtGivenIndex(Model model,
+    public String deleteAtGivenIndex(RedirectAttributes redirectAttributes,
                                      @RequestParam int indexNode) {
 
         deleteAtGivenIndexService.deleteAtGivenIndex(indexNode);
 
-        model.addAttribute("myList", singlyLinkedListService.toString());
-        model.addAttribute("mySize", "Size of the List: " + singlyLinkedListService.size());
-        model.addAttribute("nodeElementAtIndex", "Deleting the element at index " + indexNode);
+        //This will send the info to view according the PRG Pattern
+        redirectAttributes.addFlashAttribute("nodeElementAtIndex",
+                "Deleting the element at index " + indexNode);
 
-        return "linked-list";
+        return "redirect:/linked-list/page";
     }
 
     @GetMapping("/reverse-list")
