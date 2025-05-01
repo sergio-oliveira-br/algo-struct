@@ -25,7 +25,11 @@ public class DoubleLinkedListController {
     }
 
     @GetMapping("/page")
-    public String showDoubleLinkedListPage() {
+    public String showDoubleLinkedListPage(Model model) {
+
+        model.addAttribute("list", "List:  " + doubleLinkedListService.getAllElementsFromDLL());
+        model.addAttribute("size", "Size: " + doubleLinkedListService.size());
+
         return "double-linked-list";
     }
 
