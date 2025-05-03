@@ -60,7 +60,6 @@ public class GenerateAndSeachLinearController {
 
         //Find Min and Max
         if(model.containsAttribute("findNumbersGenerated")){
-
             String findNumbersGenerated  = (String) model.getAttribute("findNumbersGenerated");
             model.addAttribute("findNumbersGenerated", findNumbersGenerated);
 
