@@ -67,6 +67,14 @@ public class GenerateAndSeachLinearController {
             model.addAttribute("resultMinMax", resultMinMax);
         }
 
+        if(model.containsAttribute("duplicatesNumbersGenerated")){
+            String duplicatesNumbersGenerated  = (String) model.getAttribute("duplicatesNumbersGenerated");
+            model.addAttribute("duplicatesNumbersGenerated",duplicatesNumbersGenerated);
+
+            Map<String, Boolean> resultCheckDuplicates = (Map<String, Boolean>) model.getAttribute("resultCheckDuplicates");
+            model.addAttribute("resultCheckDuplicates", resultCheckDuplicates);
+        }
+
         return "linear-search";
     }
 
@@ -100,20 +108,18 @@ public class GenerateAndSeachLinearController {
         return "redirect:/generate-and-search/page";
     }
 
-    @GetMapping("/check-duplicates")
-    public String checkDuplicates(Model model,
-                                  @RequestParam int arrayLenght,
+    @PostMapping("/check-duplicates")
+    public String checkDuplicates(RedirectAttributes redirectAttributes,
+                                  @RequestParam int arrayLength,
                                   @RequestParam List<String> duplicateCheckerAlgoristhm) {
 
-        System.out.println("Controlador Acessado");
+        int[] numbersGenerated = randomNumService.generateRandomNum(arrayLength);
+        Map<String, Boolean> resultCheckDuplicates = duplicateCheckService
+                .executeDuplicateCheckAlgorithms(numbersGenerated, duplicateCheckerAlgoristhm);
 
-        int[] numbersGenerated = randomNumService.generateRandomNum(arrayLenght);
-        Map<String, Boolean> resultCheckDuplicates = duplicateCheckService.executeDuplicateCheckAlgorithms(numbersGenerated, duplicateCheckerAlgoristhm);
+        redirectAttributes.addFlashAttribute("duplicatesNumbersGenerated", Arrays.toString(numbersGenerated));
+        redirectAttributes.addFlashAttribute("resultCheckDuplicates", resultCheckDuplicates);
 
-        model.addAttribute("duplicatesNumbersGenerated", Arrays.toString(numbersGenerated));
-        model.addAttribute("resultCheckDuplicates", resultCheckDuplicates);
-
-        return "linear-search";
-
+        return "redirect:/generate-and-search/page";
     }
 }
