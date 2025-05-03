@@ -58,6 +58,16 @@ public class GenerateAndSeachLinearController {
             model.addAttribute("result", result);
         }
 
+        //Find Min and Max
+        if(model.containsAttribute("findNumbersGenerated")){
+
+            String findNumbersGenerated  = (String) model.getAttribute("findNumbersGenerated");
+            model.addAttribute("findNumbersGenerated", findNumbersGenerated);
+
+            Map<String, Integer> resultMinMax = (Map<String, Integer>) model.getAttribute("resultMinMax");
+            model.addAttribute("resultMinMax", resultMinMax);
+        }
+
         return "linear-search";
     }
 
@@ -77,18 +87,18 @@ public class GenerateAndSeachLinearController {
         return "redirect:/generate-and-search/page";
     }
 
-    @GetMapping("/find-min-max")
-    public String findMinMax(Model model,
+    @PostMapping("/find-min-max")
+    public String findMinMax(RedirectAttributes redirectAttributes,
                              @RequestParam int arraySize,
                              @RequestParam List<String> findMinMaxAlgorithm) {
 
         int[] numbersGenerated = randomNumService.generateRandomNum(arraySize);
         Map<String, Integer> resultMinMax = findMinMaxService.executeFindMinMaxAlgorithms(numbersGenerated, findMinMaxAlgorithm);
 
-        model.addAttribute("findNumbersGenerated", Arrays.toString(numbersGenerated));
-        model.addAttribute("resultMinMax", resultMinMax);
+        redirectAttributes.addFlashAttribute("findNumbersGenerated", Arrays.toString(numbersGenerated));
+        redirectAttributes.addFlashAttribute("resultMinMax", resultMinMax);
 
-        return "linear-search";
+        return "redirect:/generate-and-search/page";
     }
 
     @GetMapping("/check-duplicates")
