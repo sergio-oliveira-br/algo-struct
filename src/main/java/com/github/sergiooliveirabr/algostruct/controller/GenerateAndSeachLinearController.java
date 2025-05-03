@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Arrays;
 import java.util.List;
@@ -38,24 +40,41 @@ public class GenerateAndSeachLinearController {
     }
 
     @GetMapping("/page")
-    public String showLinearSearchPage() {
+    public String showLinearSearchPage(Model model) {
+
+        //Generate And Search Linear
+        if(model.containsAttribute("numbersGenerated")){
+            String numbersGenerated  = (String) model.getAttribute("numbersGenerated");
+            model.addAttribute("numbersGenerated", numbersGenerated);
+
+            String qtyGenerated = (String) model.getAttribute("qty");
+            model.addAttribute("qty", qtyGenerated);
+
+
+            String target = (String) model.getAttribute("target");
+            model.addAttribute("target", target);
+
+            String result = (String) model.getAttribute("result");
+            model.addAttribute("result", result);
+        }
+
         return "linear-search";
     }
 
-    @GetMapping("/linear-search")
-    public String generateAndSearchLinear(Model model,
+    @PostMapping("/linear-search")
+    public String generateAndSearchLinear(RedirectAttributes redirectAttributes,
                                           @RequestParam int qty,
                                           @RequestParam int target) {
 
         int[] numbersGenerated = randomNumService.generateRandomNum(qty);
         String result = linearSearchService.linearSearch(numbersGenerated, target);
 
-        model.addAttribute("numbersGenerated", Arrays.toString(numbersGenerated));
-        model.addAttribute("qty", "It was generated " +  qty + " random numbers");
-        model.addAttribute("target", "Target: " + target);
-        model.addAttribute("result", result);
+        redirectAttributes.addFlashAttribute("numbersGenerated", Arrays.toString(numbersGenerated));
+        redirectAttributes.addFlashAttribute("qty", "It was generated " +  qty + " random numbers");
+        redirectAttributes.addFlashAttribute("target", "Target: " + target);
+        redirectAttributes.addFlashAttribute("result", result);
 
-        return "linear-search";
+        return "redirect:/generate-and-search/page";
     }
 
     @GetMapping("/find-min-max")
