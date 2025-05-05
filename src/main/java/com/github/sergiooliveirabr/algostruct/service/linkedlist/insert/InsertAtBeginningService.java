@@ -6,19 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class InsertAtBeginningService<T> implements InsertElementStrategy<T> {
+public class InsertAtBeginningService implements InsertElementStrategy {
 
-    private final SinglyLinkedListService<T> singlyLinkedListService;
+    private final SinglyLinkedListService<Integer> singlyLinkedListService;
 
     @Autowired
-    public InsertAtBeginningService(SinglyLinkedListService<T> singlyLinkedListService) {
+    public InsertAtBeginningService(SinglyLinkedListService<Integer> singlyLinkedListService) {
         this.singlyLinkedListService = singlyLinkedListService;
     }
 
     @Override
-    public void insertElement(T value) {
+    public void insertElement(int value) {
 
-        Node<T> newNode = new Node<>(value);
+        Node<Integer> newNode = new Node<>(value);
 
         if(singlyLinkedListService.isEmpty()){
             singlyLinkedListService.setHead(newNode);
