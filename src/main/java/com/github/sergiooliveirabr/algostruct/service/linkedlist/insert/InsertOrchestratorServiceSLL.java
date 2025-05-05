@@ -20,9 +20,8 @@ public class InsertOrchestratorServiceSLL {
         InsertElementStrategy insertElementStrategy = insertElementStrategyMap.get(selectedStrategy);
 
         if (insertElementStrategy == null) {
-            throw new RuntimeException("Strategy " + selectedStrategy + " not found");
+            throw new IllegalArgumentException("Strategy " + selectedStrategy + " not found");
         }
-
         insertElementStrategy.insertElement(element);
     }
 }
