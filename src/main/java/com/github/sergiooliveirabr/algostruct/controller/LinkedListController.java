@@ -3,6 +3,7 @@ package com.github.sergiooliveirabr.algostruct.controller;
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.delete.DeleteAtGivenIndexService;
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.delete.DeleteFirstElementService;
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.delete.DeleteLastElementService;
+import com.github.sergiooliveirabr.algostruct.service.linkedlist.delete.DeleteOrchestratorSLLService;
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.insert.InsertAtGivenIndexService;
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.insert.InsertOrchestratorServiceSLL;
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.SinglyLinkedListService;
@@ -20,14 +21,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class LinkedListController {
 
     private final SinglyLinkedListService<Integer> singlyLinkedListService;
-    private final DeleteFirstElementService<Integer> deleteFirstElementService;
-    private final DeleteLastElementService<Integer> deleteLastElementService;
     private final FindValueService<Integer> findValueService;
     private final FindNodeService<Integer> findNodeService;
     private final InsertAtGivenIndexService<Integer> insertAtGivenIndexService;
     private final DeleteAtGivenIndexService<Integer> deleteAtGivenIndexService;
     private final ReverseListService<Integer> reverseListService;
     private final InsertOrchestratorServiceSLL insertOrchestratorServiceSLL;
+    private final DeleteOrchestratorSLLService deleteOrchestratorSLLService;
 
     @Autowired
     public LinkedListController(SinglyLinkedListService<Integer> singlyLinkedListService,
@@ -37,17 +37,16 @@ public class LinkedListController {
                                 FindNodeService<Integer> findNodeService,
                                 InsertAtGivenIndexService<Integer> insertAtGivenIndexService,
                                 DeleteAtGivenIndexService<Integer> deleteAtGivenIndexService,
-                                ReverseListService<Integer> reverseListService, InsertOrchestratorServiceSLL insertOrchestratorServiceSLL) {
+                                ReverseListService<Integer> reverseListService, InsertOrchestratorServiceSLL insertOrchestratorServiceSLL, DeleteOrchestratorSLLService deleteOrchestratorSLLService) {
 
         this.singlyLinkedListService = singlyLinkedListService;
-        this.deleteFirstElementService = deleteFirstElementService;
-        this.deleteLastElementService = deleteLastElementService;
         this.findValueService = findValueService;
         this.findNodeService = findNodeService;
         this.insertAtGivenIndexService = insertAtGivenIndexService;
         this.deleteAtGivenIndexService = deleteAtGivenIndexService;
         this.reverseListService = reverseListService;
         this.insertOrchestratorServiceSLL = insertOrchestratorServiceSLL;
+        this.deleteOrchestratorSLLService = deleteOrchestratorSLLService;
     }
 
     @GetMapping("/page")
@@ -91,12 +90,8 @@ public class LinkedListController {
     @PostMapping("/delete")
     public String deleteAnElement(@RequestParam String deleteAlgorithm) {
 
-        if(deleteAlgorithm.equals("deleteFirstElement")){
-            deleteFirstElementService.deleteElement();
-        }
-        else{
-            deleteLastElementService.deleteElement();
-        }
+        deleteOrchestratorSLLService.deleteOrchestrator(deleteAlgorithm);
+
         return "redirect:/linked-list/page";
     }
 
