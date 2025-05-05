@@ -89,7 +89,7 @@ public class LinkedListController {
     }
 
     @PostMapping("/delete")
-    public String deleteFirstElement(@RequestParam String deleteAlgorithm) {
+    public String deleteAnElement(@RequestParam String deleteAlgorithm) {
 
         if(deleteAlgorithm.equals("deleteFirstElement")){
             deleteFirstElementService.deleteElement();
