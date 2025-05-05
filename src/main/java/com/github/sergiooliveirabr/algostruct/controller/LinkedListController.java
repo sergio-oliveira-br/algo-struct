@@ -3,9 +3,8 @@ package com.github.sergiooliveirabr.algostruct.controller;
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.delete.DeleteAtGivenIndexService;
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.delete.DeleteFirstElementService;
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.delete.DeleteLastElementService;
-import com.github.sergiooliveirabr.algostruct.service.linkedlist.insert.InsertAtBeginningService;
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.insert.InsertAtGivenIndexService;
-import com.github.sergiooliveirabr.algostruct.service.linkedlist.insert.InserteAtEndService;
+import com.github.sergiooliveirabr.algostruct.service.linkedlist.insert.InsertOrchestratorServiceSLL;
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.SinglyLinkedListService;
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.reverse.ReverseListService;
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.search.FindNodeService;
@@ -16,15 +15,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.Objects;
-
 @Controller
 @RequestMapping("/linked-list")
 public class LinkedListController {
 
     private final SinglyLinkedListService<Integer> singlyLinkedListService;
-    private final InserteAtEndService<Integer> inserteAtEndService;
-    private final InsertAtBeginningService<Integer> insertAtBeginningService;
     private final DeleteFirstElementService<Integer> deleteFirstElementService;
     private final DeleteLastElementService<Integer> deleteLastElementService;
     private final FindValueService<Integer> findValueService;
@@ -32,22 +27,19 @@ public class LinkedListController {
     private final InsertAtGivenIndexService<Integer> insertAtGivenIndexService;
     private final DeleteAtGivenIndexService<Integer> deleteAtGivenIndexService;
     private final ReverseListService<Integer> reverseListService;
+    private final InsertOrchestratorServiceSLL insertOrchestratorServiceSLL;
 
     @Autowired
     public LinkedListController(SinglyLinkedListService<Integer> singlyLinkedListService,
-                                InserteAtEndService<Integer> inserteAtEndService,
-                                InsertAtBeginningService<Integer> insertAtBeginningService,
                                 DeleteFirstElementService<Integer> deleteFirstElementService,
                                 DeleteLastElementService<Integer> deleteLastElementService,
                                 FindValueService<Integer> findValueService,
                                 FindNodeService<Integer> findNodeService,
                                 InsertAtGivenIndexService<Integer> insertAtGivenIndexService,
                                 DeleteAtGivenIndexService<Integer> deleteAtGivenIndexService,
-                                ReverseListService<Integer> reverseListService) {
+                                ReverseListService<Integer> reverseListService, InsertOrchestratorServiceSLL insertOrchestratorServiceSLL) {
 
         this.singlyLinkedListService = singlyLinkedListService;
-        this.inserteAtEndService = inserteAtEndService;
-        this.insertAtBeginningService = insertAtBeginningService;
         this.deleteFirstElementService = deleteFirstElementService;
         this.deleteLastElementService = deleteLastElementService;
         this.findValueService = findValueService;
@@ -55,6 +47,7 @@ public class LinkedListController {
         this.insertAtGivenIndexService = insertAtGivenIndexService;
         this.deleteAtGivenIndexService = deleteAtGivenIndexService;
         this.reverseListService = reverseListService;
+        this.insertOrchestratorServiceSLL = insertOrchestratorServiceSLL;
     }
 
     @GetMapping("/page")
@@ -90,12 +83,8 @@ public class LinkedListController {
     public String insertAndDisplay(@RequestParam int element,
                                    @RequestParam String algorithm) {
 
-        if(Objects.equals(algorithm, "insertAtEndService")){
-            inserteAtEndService.insertElement(element);
-        }
-        else{
-            insertAtBeginningService.insertElement(element);
-        }
+        insertOrchestratorServiceSLL.insertOrchestrator(element, algorithm);
+
         return "redirect:/linked-list/page";
     }
 
