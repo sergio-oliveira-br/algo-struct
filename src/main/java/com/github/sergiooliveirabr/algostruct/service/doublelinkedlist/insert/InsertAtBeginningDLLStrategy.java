@@ -6,12 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class InsertAtBeginningDLL implements InsertElementDLLStrategy {
+public class InsertAtBeginningDLLStrategy implements InsertElementDLLStrategy {
 
     private final DoubleLinkedListService<Integer> doubleLinkedListService;
 
     @Autowired
-    public InsertAtBeginningDLL(DoubleLinkedListService<Integer> doubleLinkedListService) {
+    public InsertAtBeginningDLLStrategy(DoubleLinkedListService<Integer> doubleLinkedListService) {
         this.doubleLinkedListService = doubleLinkedListService;
     }
 
