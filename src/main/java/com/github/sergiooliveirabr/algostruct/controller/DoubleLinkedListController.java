@@ -1,8 +1,7 @@
 package com.github.sergiooliveirabr.algostruct.controller;
 
 import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.DoubleLinkedListService;
-import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.insert.InsertAtEndDLLStrategy;
-import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.insert.InsertElementDLLStrategy;
+import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.insert.InsertOrchestratorServiceDLL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,13 +15,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class DoubleLinkedListController {
 
     private final DoubleLinkedListService<Integer> doubleLinkedListService;
-    private final InsertAtEndDLLStrategy insertAtEndDLLStrategy;
+    private final InsertOrchestratorServiceDLL insertOrchestratorServiceDLL;
 
     @Autowired
     public DoubleLinkedListController(DoubleLinkedListService<Integer> doubleLinkedListService,
-                                      InsertAtEndDLLStrategy insertAtEndDLLStrategy) {
+                                      InsertOrchestratorServiceDLL insertOrchestratorServiceDLL) {
         this.doubleLinkedListService = doubleLinkedListService;
-        this.insertAtEndDLLStrategy = insertAtEndDLLStrategy;
+        this.insertOrchestratorServiceDLL = insertOrchestratorServiceDLL;
     }
 
     @GetMapping("/page")
@@ -35,9 +34,11 @@ public class DoubleLinkedListController {
     }
 
     @PostMapping("/insert")
-    public String insertElement(@RequestParam int element) {
+    public String insertElement(@RequestParam int element,
+                                @RequestParam String insertStrategy) {
 
-        insertAtEndDLLStrategy.insertElementDLL(element);
+        insertOrchestratorServiceDLL.insertElementDLLStrategyMap(element, insertStrategy);
+
         return "redirect:/double-linked-list/page";
     }
 
