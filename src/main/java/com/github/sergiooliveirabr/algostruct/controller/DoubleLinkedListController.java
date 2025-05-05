@@ -16,10 +16,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class DoubleLinkedListController {
 
     private final DoubleLinkedListService<Integer> doubleLinkedListService;
-    private final InsertAtEndDLLStrategy<Integer> insertAtEndDLLStrategy;
+    private final InsertAtEndDLLStrategy insertAtEndDLLStrategy;
 
     @Autowired
-    public DoubleLinkedListController(DoubleLinkedListService<Integer> doubleLinkedListService, InsertAtEndDLLStrategy<Integer> insertAtEndDLLStrategy) {
+    public DoubleLinkedListController(DoubleLinkedListService<Integer> doubleLinkedListService,
+                                      InsertAtEndDLLStrategy insertAtEndDLLStrategy) {
         this.doubleLinkedListService = doubleLinkedListService;
         this.insertAtEndDLLStrategy = insertAtEndDLLStrategy;
     }
