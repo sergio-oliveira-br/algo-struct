@@ -6,20 +6,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class InsertAtEndDLLStrategy<T> implements InsertElementDLLStrategy<T> {
+public class InsertAtEndDLLStrategy implements InsertElementDLLStrategy {
 
-    private DoubleLinkedListService<T> doubleLinkedListService;
+    private final DoubleLinkedListService<Integer> doubleLinkedListService;
 
     @Autowired
-    public InsertAtEndDLLStrategy(DoubleLinkedListService<T> doubleLinkedListService){
+    public InsertAtEndDLLStrategy(DoubleLinkedListService<Integer> doubleLinkedListService){
         this.doubleLinkedListService = doubleLinkedListService;
     }
 
     @Override
-    public void insertElementDLL(T element) {
+    public void insertElementDLL(int element) {
 
         //Create a new Node with the element entered
-        NodeDLL<T> newNode = new NodeDLL<>(element);
+        NodeDLL<Integer> newNode = new NodeDLL<>(element);
 
         //If there is no element in the list
         if(doubleLinkedListService.isEmpty()){
@@ -31,7 +31,7 @@ public class InsertAtEndDLLStrategy<T> implements InsertElementDLLStrategy<T> {
 
         //If there is at least one element in the list
         else {
-            NodeDLL<T> currentNode = doubleLinkedListService.getTailDLL();
+            NodeDLL<Integer> currentNode = doubleLinkedListService.getTailDLL();
 
             currentNode.setNext(newNode);
             newNode.setPrevious(currentNode);
