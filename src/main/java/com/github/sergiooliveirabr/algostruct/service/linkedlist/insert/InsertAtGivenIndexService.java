@@ -10,16 +10,16 @@ public class InsertAtGivenIndexService<T> {
 
     //injetar os componentes
     private final InsertAtBeginningService insertAtBeginningService;
-    private final InserteAtEndService inserteAtEndService;
+    private final InsertAtEndService insertAtEndService;
     private final SinglyLinkedListService singlyLinkedListService;
 
     @Autowired
     public InsertAtGivenIndexService(InsertAtBeginningService insertAtBeginningService,
-                                     InserteAtEndService inserteAtEndService,
+                                     InsertAtEndService insertAtEndService,
                                      SinglyLinkedListService singlyLinkedListService) {
 
         this.insertAtBeginningService = insertAtBeginningService;
-        this.inserteAtEndService = inserteAtEndService;
+        this.insertAtEndService = insertAtEndService;
         this.singlyLinkedListService = singlyLinkedListService;
     }
 
@@ -32,10 +32,10 @@ public class InsertAtGivenIndexService<T> {
         int size = singlyLinkedListService.size();
 
         if (index == 0) {
-            insertAtBeginningService.insertElement(element);
+            insertAtBeginningService.insertElement((int)element);
 
         } else if (index == size) {
-            inserteAtEndService.insertElement(element);
+            insertAtEndService.insertElement((int)element);
 
         } else if (index > 0 && index < size) {
             for (int i = 0; i < index; i++) {
