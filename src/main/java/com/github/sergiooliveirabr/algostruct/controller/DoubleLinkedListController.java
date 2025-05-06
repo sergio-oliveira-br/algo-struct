@@ -38,11 +38,8 @@ public class DoubleLinkedListController {
     }
 
     @PostMapping("/insert")
-    public String insertElement(@RequestParam int element,
-                                @RequestParam String insertStrategy) {
-
+    public String insertElement(@RequestParam int element, @RequestParam String insertStrategy) {
         insertOrchestratorServiceDLL.insertElementDLLStrategyMap(element, insertStrategy);
-
         return "redirect:/double-linked-list/page";
     }
 
