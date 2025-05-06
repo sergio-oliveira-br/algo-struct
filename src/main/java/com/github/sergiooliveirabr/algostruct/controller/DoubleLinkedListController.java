@@ -1,6 +1,7 @@
 package com.github.sergiooliveirabr.algostruct.controller;
 
 import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.DoubleLinkedListService;
+import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.insert.InsertAtGivenIndexDLLStrategy;
 import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.insert.InsertOrchestratorServiceDLL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,12 +17,15 @@ public class DoubleLinkedListController {
 
     private final DoubleLinkedListService<Integer> doubleLinkedListService;
     private final InsertOrchestratorServiceDLL insertOrchestratorServiceDLL;
+    private final InsertAtGivenIndexDLLStrategy insertAtGivenIndexDLLStrategy;
 
     @Autowired
     public DoubleLinkedListController(DoubleLinkedListService<Integer> doubleLinkedListService,
-                                      InsertOrchestratorServiceDLL insertOrchestratorServiceDLL) {
+                                      InsertOrchestratorServiceDLL insertOrchestratorServiceDLL,
+                                      InsertAtGivenIndexDLLStrategy insertAtGivenIndexDLLStrategy) {
         this.doubleLinkedListService = doubleLinkedListService;
         this.insertOrchestratorServiceDLL = insertOrchestratorServiceDLL;
+        this.insertAtGivenIndexDLLStrategy = insertAtGivenIndexDLLStrategy;
     }
 
     @GetMapping("/page")
@@ -42,5 +46,9 @@ public class DoubleLinkedListController {
         return "redirect:/double-linked-list/page";
     }
 
-
+    @PostMapping("/insert-by-index")
+    public String insertElementByGivenIndexDLL(@RequestParam int element, @RequestParam int index) {
+    insertAtGivenIndexDLLStrategy.insertElementByIndexDLL(element, index);
+    return "redirect:/double-linked-list/page";
+    }
 }
