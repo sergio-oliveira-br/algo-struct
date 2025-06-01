@@ -1,6 +1,8 @@
 package com.github.sergiooliveirabr.algostruct.controller;
 
 import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.DoubleLinkedListService;
+import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.delete.DeleteElementStrategyDLL;
+import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.delete.DeleteLastElementDLLService;
 import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.insert.InsertAtGivenIndexDLLStrategy;
 import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.insert.InsertOrchestratorServiceDLL;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,14 +20,16 @@ public class DoubleLinkedListController {
     private final DoubleLinkedListService<Integer> doubleLinkedListService;
     private final InsertOrchestratorServiceDLL insertOrchestratorServiceDLL;
     private final InsertAtGivenIndexDLLStrategy insertAtGivenIndexDLLStrategy;
+    private final DeleteLastElementDLLService<Integer> deleteLastElementDLLService;
 
     @Autowired
     public DoubleLinkedListController(DoubleLinkedListService<Integer> doubleLinkedListService,
                                       InsertOrchestratorServiceDLL insertOrchestratorServiceDLL,
-                                      InsertAtGivenIndexDLLStrategy insertAtGivenIndexDLLStrategy) {
+                                      InsertAtGivenIndexDLLStrategy insertAtGivenIndexDLLStrategy, DeleteLastElementDLLService<Integer> deleteLastElementDLLService) {
         this.doubleLinkedListService = doubleLinkedListService;
         this.insertOrchestratorServiceDLL = insertOrchestratorServiceDLL;
         this.insertAtGivenIndexDLLStrategy = insertAtGivenIndexDLLStrategy;
+        this.deleteLastElementDLLService = deleteLastElementDLLService;
     }
 
     @GetMapping("/page")
@@ -46,6 +50,12 @@ public class DoubleLinkedListController {
     @PostMapping("/insert-by-index")
     public String insertElementByGivenIndexDLL(@RequestParam int element, @RequestParam int index) {
         insertAtGivenIndexDLLStrategy.insertElementByIndexDLL(element, index);
+        return "redirect:/double-linked-list/page";
+    }
+
+    @PostMapping("/delete")
+    public String deleteAnElement() {
+        deleteLastElementDLLService.deleteElementDLL();
         return "redirect:/double-linked-list/page";
     }
 }
