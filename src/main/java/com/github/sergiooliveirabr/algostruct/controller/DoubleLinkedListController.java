@@ -45,7 +45,7 @@ public class DoubleLinkedListController {
 
     @PostMapping("/insert-by-index")
     public String insertElementByGivenIndexDLL(@RequestParam int element, @RequestParam int index) {
-    insertAtGivenIndexDLLStrategy.insertElementByIndexDLL(element, index);
-    return "redirect:/double-linked-list/page";
+        insertAtGivenIndexDLLStrategy.insertElementByIndexDLL(element, index);
+        return "redirect:/double-linked-list/page";
     }
 }
