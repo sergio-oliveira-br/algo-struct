@@ -39,6 +39,9 @@ public class DoubleLinkedListController {
         model.addAttribute("list", "List:  " + doubleLinkedListService.getAllElementsFromDLL());
         model.addAttribute("size", "Size: " + doubleLinkedListService.size());
 
+        //it makes the button do delete enable or disable
+        model.addAttribute("mysize", doubleLinkedListService.size());
+
         return "double-linked-list";
     }
 
