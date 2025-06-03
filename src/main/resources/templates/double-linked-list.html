@@ -117,14 +117,14 @@
                         <div class="card-body">
                             <form th:action="@{/double-linked-list/delete}" method="post">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="" value="" checked>
-                                    <label class="form-check-label" for="">Remove the first node</label>
+                                    <input class="form-check-input"  type="radio" name="strategy" value="deleteFirstElementDLLStrategy" checked>
+                                    <label class="form-check-label" th:for="deleteFirstElementDLLStrategy">Remove the first node</label>
                                     <p class="text-muted">This operation is based on a queue. The first element to enter is the first to exit.</p>
                                 </div>
 
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="" value="">
-                                    <label class="form-check-label" for="">Remove the last node</label>
+                                    <input class="form-check-input" type="radio" name="strategy" value="deleteLastElementDLLStrategy">
+                                    <label class="form-check-label" th:for="deleteLastElementDLLStrategy">Remove the last node</label>
                                     <p class="text-muted">This exclusion at the end addresses the concept of a Stack. The last element to enter is the first to exit</p>
                                 </div>
                                 <button type="submit" class="btn btn-warning col-12">Delete</button>
