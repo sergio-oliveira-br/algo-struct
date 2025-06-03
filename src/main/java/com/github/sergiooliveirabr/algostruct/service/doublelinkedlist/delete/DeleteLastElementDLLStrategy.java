@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 import java.util.EmptyStackException;
 
 @Service
-public class DeleteLastElementDLLService<T> implements DeleteElementStrategyDLL {
+public class DeleteLastElementDLLStrategy<T> implements DeleteElementStrategyDLL {
 
     private final DoubleLinkedListService<T> doubleLinkedListService;
 
     @Autowired
-    public DeleteLastElementDLLService(DoubleLinkedListService<T> doubleLinkedListService) {
+    public DeleteLastElementDLLStrategy(DoubleLinkedListService<T> doubleLinkedListService) {
         this.doubleLinkedListService = doubleLinkedListService;
     }
 
