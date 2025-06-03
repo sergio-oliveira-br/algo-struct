@@ -1,7 +1,7 @@
 package com.github.sergiooliveirabr.algostruct.controller;
 
 import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.DoubleLinkedListService;
-import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.delete.DeleteLastElementDLLStrategy;
+import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.delete.DeleteOrchestratorDLLService;
 import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.insert.InsertAtGivenIndexDLLStrategy;
 import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.insert.InsertOrchestratorServiceDLL;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,16 +19,18 @@ public class DoubleLinkedListController {
     private final DoubleLinkedListService<Integer> doubleLinkedListService;
     private final InsertOrchestratorServiceDLL insertOrchestratorServiceDLL;
     private final InsertAtGivenIndexDLLStrategy insertAtGivenIndexDLLStrategy;
-    private final DeleteLastElementDLLStrategy<Integer> deleteLastElementDLLStrategy;
+    private final DeleteOrchestratorDLLService<Integer> deleteOrchestratorDLLService;
 
     @Autowired
     public DoubleLinkedListController(DoubleLinkedListService<Integer> doubleLinkedListService,
                                       InsertOrchestratorServiceDLL insertOrchestratorServiceDLL,
-                                      InsertAtGivenIndexDLLStrategy insertAtGivenIndexDLLStrategy, DeleteLastElementDLLStrategy<Integer> deleteLastElementDLLStrategy) {
+                                      InsertAtGivenIndexDLLStrategy insertAtGivenIndexDLLStrategy,
+                                      DeleteOrchestratorDLLService<Integer> deleteOrchestratorDLLService) {
+
         this.doubleLinkedListService = doubleLinkedListService;
         this.insertOrchestratorServiceDLL = insertOrchestratorServiceDLL;
         this.insertAtGivenIndexDLLStrategy = insertAtGivenIndexDLLStrategy;
-        this.deleteLastElementDLLStrategy = deleteLastElementDLLStrategy;
+        this.deleteOrchestratorDLLService = deleteOrchestratorDLLService;
     }
 
     @GetMapping("/page")
@@ -53,8 +55,8 @@ public class DoubleLinkedListController {
     }
 
     @PostMapping("/delete")
-    public String deleteAnElement() {
-        deleteLastElementDLLStrategy.deleteElementDLL();
+    public String deleteAnElement(@RequestParam String strategy) {
+        deleteOrchestratorDLLService.deleteOrchestratorDLL(strategy);
         return "redirect:/double-linked-list/page";
     }
 }
