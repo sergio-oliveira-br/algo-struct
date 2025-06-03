@@ -127,7 +127,7 @@
                                     <label class="form-check-label" th:for="deleteLastElementDLLStrategy">Remove the last node</label>
                                     <p class="text-muted">This exclusion at the end addresses the concept of a Stack. The last element to enter is the first to exit</p>
                                 </div>
-                                <button type="submit" class="btn btn-warning col-12">Delete</button>
+                                    <button th:if="${mysize} >= 1" type="submit" class="btn btn-warning col-12">Delete</button>
                             </form>
                         </div>
                     </div>
