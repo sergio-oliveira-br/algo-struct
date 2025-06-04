@@ -10,14 +10,10 @@ import java.util.Map;
 public class DeleteOrchestratorDLLService<T> {
 
     private final Map<String, DeleteElementStrategyDLL> deleteElementStrategyDLLMap;
-    private final DoubleLinkedListService<Integer> doubleLinkedListService;
 
     @Autowired
-    public DeleteOrchestratorDLLService(Map<String, DeleteElementStrategyDLL> deleteElementStrategyDLLMap,
-                                        DoubleLinkedListService<Integer> doubleLinkedListService) {
-
+    public DeleteOrchestratorDLLService(Map<String, DeleteElementStrategyDLL> deleteElementStrategyDLLMap) {
         this.deleteElementStrategyDLLMap = deleteElementStrategyDLLMap;
-        this.doubleLinkedListService = doubleLinkedListService;
     }
 
     public void deleteOrchestratorDLL(String selectedStrategy) {
