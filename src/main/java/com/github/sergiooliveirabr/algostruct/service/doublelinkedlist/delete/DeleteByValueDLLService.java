@@ -7,12 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class DeleteByValueDLL implements DeleteByValueStrategyDLL {
+public class DeleteByValueDLLService implements DeleteByValueStrategyDLL {
 
     private final DoubleLinkedListService<Integer> doubleLinkedListService;
 
     @Autowired
-    public DeleteByValueDLL(DoubleLinkedListService<Integer> doubleLinkedListService) {
+    public DeleteByValueDLLService(DoubleLinkedListService<Integer> doubleLinkedListService) {
         this.doubleLinkedListService = doubleLinkedListService;
     }
 

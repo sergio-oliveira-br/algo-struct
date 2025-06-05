@@ -1,7 +1,7 @@
 package com.github.sergiooliveirabr.algostruct.controller;
 
 import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.DoubleLinkedListService;
-import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.delete.DeleteByValueDLL;
+import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.delete.DeleteByValueDLLService;
 import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.delete.DeleteOrchestratorDLLService;
 import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.insert.InsertAtGivenIndexDLLStrategy;
 import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.insert.InsertOrchestratorServiceDLL;
@@ -21,20 +21,20 @@ public class DoubleLinkedListController {
     private final InsertOrchestratorServiceDLL insertOrchestratorServiceDLL;
     private final InsertAtGivenIndexDLLStrategy insertAtGivenIndexDLLStrategy;
     private final DeleteOrchestratorDLLService<Integer> deleteOrchestratorDLLService;
-    private final DeleteByValueDLL deleteByValueDLL;
+    private final DeleteByValueDLLService deleteByValueDLLService;
 
     @Autowired
     public DoubleLinkedListController(DoubleLinkedListService<Integer> doubleLinkedListService,
                                       InsertOrchestratorServiceDLL insertOrchestratorServiceDLL,
                                       InsertAtGivenIndexDLLStrategy insertAtGivenIndexDLLStrategy,
                                       DeleteOrchestratorDLLService<Integer> deleteOrchestratorDLLService,
-                                      DeleteByValueDLL deleteByValueDLL) {
+                                      DeleteByValueDLLService deleteByValueDLLService) {
 
         this.doubleLinkedListService = doubleLinkedListService;
         this.insertOrchestratorServiceDLL = insertOrchestratorServiceDLL;
         this.insertAtGivenIndexDLLStrategy = insertAtGivenIndexDLLStrategy;
         this.deleteOrchestratorDLLService = deleteOrchestratorDLLService;
-        this.deleteByValueDLL = deleteByValueDLL;
+        this.deleteByValueDLLService = deleteByValueDLLService;
     }
 
     @GetMapping("/page")
@@ -69,7 +69,7 @@ public class DoubleLinkedListController {
 
     @PostMapping("/delete-by-value")
     public String deleteAnElementByValueDLL(@RequestParam int element) {
-        deleteByValueDLL.deleteByValueDLL(element);
+        deleteByValueDLLService.deleteByValueDLL(element);
         return "redirect:/double-linked-list/page";
     }
 }
