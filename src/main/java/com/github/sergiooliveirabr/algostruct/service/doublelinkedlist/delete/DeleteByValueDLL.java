@@ -1,6 +1,8 @@
 package com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.delete;
 
+import com.github.sergiooliveirabr.algostruct.exceptions.EmptyListException;
 import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.DoubleLinkedListService;
+import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.NodeDLL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,5 +19,11 @@ public class DeleteByValueDLL implements DeleteByValueStrategyDLL {
     @Override
     public void deleteByValueDLL(int value) {
 
+        NodeDLL<Integer> current = doubleLinkedListService.getHeadDLL();
+
+        if (current == null) {
+            System.out.println("the current list is empty.");
+            throw new EmptyListException();
+        }
     }
 }
