@@ -1,5 +1,6 @@
 package com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.delete;
 
+import com.github.sergiooliveirabr.algostruct.exceptions.EmptyListException;
 import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.DoubleLinkedListService;
 import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.NodeDLL;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ public class DeleteLastElementDLLStrategy<T> implements DeleteElementStrategyDLL
         NodeDLL<T> head = doubleLinkedListService.getHeadDLL();
 
         if(doubleLinkedListService.isEmpty()) {
-            throw new EmptyStackException();
+            throw new EmptyListException();
         }
         else if (currentTail == head) {
             currentTail.setPrevious(null);
