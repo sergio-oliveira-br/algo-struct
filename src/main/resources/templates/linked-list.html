@@ -234,6 +234,11 @@
                           <p th:text="${mySize}"></p>
                           <p th:text="${node}"></p>
                           <p th:text="${nodeElementAtIndex}"></p>
+
+                          <div th:if="${errorMessage}" class="alert alert-danger mt-3" role="alert">
+                              <p th:text="${errorMessage}"></p>
+                          </div>
+
                       </div>
                   </div>
               </div><!-- output card -->
