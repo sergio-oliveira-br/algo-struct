@@ -1,5 +1,6 @@
 package com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.insert;
 
+import com.github.sergiooliveirabr.algostruct.exceptions.InvalidIndexException;
 import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.DoubleLinkedListService;
 import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.NodeDLL;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +46,7 @@ public class InsertAtGivenIndexDLLStrategy {
             currentElement.setPrevious(newNodeDLL);
         }
         else {
-            throw new IllegalArgumentException("Sorry! Index out of bounds");
+            throw new InvalidIndexException();
         }
     }
 }
