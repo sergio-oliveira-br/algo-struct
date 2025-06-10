@@ -72,7 +72,7 @@
                                   </label>
                               </div>
 
-                              <div th:if="${myList} != null" class="form-check">
+                              <div th:if="${list} != null" class="form-check">
                                   <input class="form-check-input" type="radio" name="algorithm"
                                          id="atBeginning" value="insertAtBeginningService">
 
@@ -154,7 +154,7 @@
                                       <p>What is the next node?</p>
                                       <b class="ms-2" th:text="${nextNode}"></b>
                                   </div>
-                                  <button th:if="${myList} != null" type="submit" class="btn btn-primary col-12">Search</button>
+                                  <button th:if="${list} != null" type="submit" class="btn btn-primary col-12">Search</button>
                               </form>
                           </div>
                       </div>
@@ -230,8 +230,8 @@
                   <div class="card mt-3">
                       <div class="card-body">
                           <h5>Output</h5>
-                          <p th:text="${myList}"></p>
-                          <p th:text="${mySize}"></p>
+                          <p th:text="${list}"></p>
+                          <p th:text="${size}"></p>
                           <p th:text="${node}"></p>
                           <p th:text="${nodeElementAtIndex}"></p>
 
