@@ -54,6 +54,7 @@ public class LinkedListController {
 
         model.addAttribute("list", singlyLinkedListService.toString());
         model.addAttribute("size", "Size of the List: " + singlyLinkedListService.size());
+        model.addAttribute("mysize", singlyLinkedListService.size());
         model.containsAttribute("errorMessage");
 
 
