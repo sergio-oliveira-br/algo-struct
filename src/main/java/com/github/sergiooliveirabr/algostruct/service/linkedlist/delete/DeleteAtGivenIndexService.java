@@ -1,5 +1,6 @@
 package com.github.sergiooliveirabr.algostruct.service.linkedlist.delete;
 
+import com.github.sergiooliveirabr.algostruct.exceptions.InvalidIndexException;
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.Node;
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.SinglyLinkedListService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +45,7 @@ public class DeleteAtGivenIndexService<T> {
 
         }
         else {
-            throw new IndexOutOfBoundsException();
+            throw new InvalidIndexException();
         }
     }
 }
