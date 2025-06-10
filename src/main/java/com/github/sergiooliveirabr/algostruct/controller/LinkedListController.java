@@ -52,8 +52,8 @@ public class LinkedListController {
     @GetMapping("/page")
     public String showLinkedListPage(Model model) {
 
-        model.addAttribute("myList", singlyLinkedListService.toString());
-        model.addAttribute("mySize", "Size of the List: " + singlyLinkedListService.size());
+        model.addAttribute("list", singlyLinkedListService.toString());
+        model.addAttribute("size", "Size of the List: " + singlyLinkedListService.size());
         model.containsAttribute("errorMessage");
 
 
