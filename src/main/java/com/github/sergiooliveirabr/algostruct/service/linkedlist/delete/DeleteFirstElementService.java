@@ -1,5 +1,6 @@
 package com.github.sergiooliveirabr.algostruct.service.linkedlist.delete;
 
+import com.github.sergiooliveirabr.algostruct.exceptions.EmptyListException;
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.SinglyLinkedListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,9 @@ public class DeleteFirstElementService<T> implements DeleteElementStrategy {
             if(singlyLinkedListService.getHead() == null){
                 singlyLinkedListService.setTail(null);
             }
+        }
+        else {
+            throw new EmptyListException();
         }
     }
 }
