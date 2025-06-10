@@ -1,5 +1,6 @@
 package com.github.sergiooliveirabr.algostruct.service.linkedlist.delete;
 
+import com.github.sergiooliveirabr.algostruct.exceptions.EmptyListException;
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.Node;
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.SinglyLinkedListService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,26 +19,22 @@ public class DeleteLastElementService<T> implements DeleteElementStrategy {
     @Override
     public void deleteElement() {
 
-        Node current = singlyLinkedListService.getHead();
-        Node tail = singlyLinkedListService.getTail();
-        Node previous = null;
+        if (singlyLinkedListService.isEmpty()){
+            throw new EmptyListException();
+        }
 
         if(singlyLinkedListService.getHead() == singlyLinkedListService.getTail()){
             singlyLinkedListService.setHead(null);
             singlyLinkedListService.setTail(null);
             return;
         }
-        while(current != null && current != tail){
-           previous = current;
+
+        Node current = singlyLinkedListService.getHead();
+
+        while(current.next != singlyLinkedListService.getTail()){
            current = current.next;
         }
-        if(previous != null){
-            previous.next = null;
-            singlyLinkedListService.setTail(previous);
-        }
-        else{
-            singlyLinkedListService.setHead(null);
-            singlyLinkedListService.setTail(null);
-        }
+        current.next = null;
+        singlyLinkedListService.setTail(current);
     }
 }
