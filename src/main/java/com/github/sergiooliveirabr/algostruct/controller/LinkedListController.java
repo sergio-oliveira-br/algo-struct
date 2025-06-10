@@ -54,6 +54,7 @@ public class LinkedListController {
 
         model.addAttribute("myList", singlyLinkedListService.toString());
         model.addAttribute("mySize", "Size of the List: " + singlyLinkedListService.size());
+        model.containsAttribute("errorMessage");
 
 
         //This is related to Search for an Element
