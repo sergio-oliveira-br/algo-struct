@@ -1,5 +1,6 @@
 package com.github.sergiooliveirabr.algostruct.service.linkedlist.insert;
 
+import com.github.sergiooliveirabr.algostruct.exceptions.InvalidIndexException;
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.Node;
 import com.github.sergiooliveirabr.algostruct.service.linkedlist.SinglyLinkedListService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +47,7 @@ public class InsertAtGivenIndexService<T> {
             previous.next = newNode;
 
         } else {
-            throw new ArrayIndexOutOfBoundsException();
+            throw new InvalidIndexException();
         }
     }
 }
