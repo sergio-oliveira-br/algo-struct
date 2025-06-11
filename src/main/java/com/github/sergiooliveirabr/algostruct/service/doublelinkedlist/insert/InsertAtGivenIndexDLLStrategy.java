@@ -25,7 +25,7 @@ public class InsertAtGivenIndexDLLStrategy {
         NodeDLL<Integer> newNodeDLL = new NodeDLL<>(element);
         int lengthDLL = doubleLinkedListService.size();
 
-        if(lengthDLL == 0 || index == 0) {
+        if(index == 0) {
             insertAtBeginningDLLStrategy.insertElementDLL(newNodeDLL.getElement());
         }
         else if (index == lengthDLL) {
