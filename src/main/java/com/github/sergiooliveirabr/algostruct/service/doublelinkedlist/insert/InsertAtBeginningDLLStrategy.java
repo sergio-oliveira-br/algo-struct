@@ -20,16 +20,14 @@ public class InsertAtBeginningDLLStrategy implements InsertElementDLLStrategy {
 
         NodeDLL<Integer> newNodeDLL = new NodeDLL<>(element);
 
-        int lengthDDL = doubleLinkedListService.size();
-
-        if(lengthDDL == 0) {
+        if(doubleLinkedListService.isEmpty()) {
             doubleLinkedListService.setHeadDLL(newNodeDLL);
             newNodeDLL.setPrevious(null);
 
             doubleLinkedListService.setTailDLL(newNodeDLL);
             newNodeDLL.setNext(null);
         }
-        else if (lengthDDL > 1) {
+        else {
             NodeDLL<Integer> oldHeadDLL = doubleLinkedListService.getHeadDLL();
 
             oldHeadDLL.setPrevious(newNodeDLL);
