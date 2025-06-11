@@ -41,4 +41,19 @@ public class GlobalExceptionHandler {
         }
         return "error";
     }
+
+    @ExceptionHandler(ElementNotFoundException.class)
+    public String handleElementNotFoundException(ElementNotFoundException ex,
+                                                 RedirectAttributes redirectAttributes,
+                                                 HttpServletRequest request) {
+
+        redirectAttributes.addFlashAttribute("errorMessage", ex.getMessage());
+
+        String referer = request.getHeader("referer");
+
+        if (referer != null && !referer.isEmpty()) {
+            return "redirect:" + referer;
+        }
+        return "error";
+    }
 }
