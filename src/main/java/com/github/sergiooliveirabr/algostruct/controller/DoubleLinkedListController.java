@@ -5,6 +5,7 @@ import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.delete.De
 import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.delete.DeleteOrchestratorDLLService;
 import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.insert.InsertAtGivenIndexDLLStrategy;
 import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.insert.InsertOrchestratorServiceDLL;
+import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.search.GetElementByIndexDLLStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/double-linked-list")
@@ -22,19 +24,22 @@ public class DoubleLinkedListController {
     private final InsertAtGivenIndexDLLStrategy insertAtGivenIndexDLLStrategy;
     private final DeleteOrchestratorDLLService<Integer> deleteOrchestratorDLLService;
     private final DeleteByValueDLLService deleteByValueDLLService;
+    private final GetElementByIndexDLLStrategy getElementByIndexDLLStrategy;
 
     @Autowired
     public DoubleLinkedListController(DoubleLinkedListService<Integer> doubleLinkedListService,
                                       InsertOrchestratorServiceDLL insertOrchestratorServiceDLL,
                                       InsertAtGivenIndexDLLStrategy insertAtGivenIndexDLLStrategy,
                                       DeleteOrchestratorDLLService<Integer> deleteOrchestratorDLLService,
-                                      DeleteByValueDLLService deleteByValueDLLService) {
+                                      DeleteByValueDLLService deleteByValueDLLService,
+                                      GetElementByIndexDLLStrategy getElementByIndexDLLStrategy) {
 
         this.doubleLinkedListService = doubleLinkedListService;
         this.insertOrchestratorServiceDLL = insertOrchestratorServiceDLL;
         this.insertAtGivenIndexDLLStrategy = insertAtGivenIndexDLLStrategy;
         this.deleteOrchestratorDLLService = deleteOrchestratorDLLService;
         this.deleteByValueDLLService = deleteByValueDLLService;
+        this.getElementByIndexDLLStrategy = getElementByIndexDLLStrategy;
     }
 
     @GetMapping("/page")
@@ -42,6 +47,7 @@ public class DoubleLinkedListController {
 
         model.addAttribute("list", "List:  " + doubleLinkedListService.getAllElementsFromDLL());
         model.addAttribute("size", "Size: " + doubleLinkedListService.size());
+        model.containsAttribute("indexElement");
 
         //it makes the button do delete enable or disable
         model.addAttribute("mysize", doubleLinkedListService.size());
@@ -72,6 +78,14 @@ public class DoubleLinkedListController {
     @PostMapping("/delete-by-value")
     public String deleteAnElementByValueDLL(@RequestParam int element) {
         deleteByValueDLLService.deleteByValueDLL(element);
+        return "redirect:/double-linked-list/page";
+    }
+
+    @PostMapping("/get-element-by-index")
+    public String getElementByIndexDLL(@RequestParam int index,
+                                       RedirectAttributes redirectAttributes) {
+        redirectAttributes.addFlashAttribute("indexElement",
+                "Index " + index + " is " +  getElementByIndexDLLStrategy.getElement(index));
         return "redirect:/double-linked-list/page";
     }
 }
