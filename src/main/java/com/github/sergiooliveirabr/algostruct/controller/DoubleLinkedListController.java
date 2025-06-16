@@ -3,6 +3,7 @@ package com.github.sergiooliveirabr.algostruct.controller;
 import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.DoubleLinkedListService;
 import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.delete.DeleteByValueDLLService;
 import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.delete.DeleteOrchestratorDLLService;
+import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.duplicate.RemoveDuplicatesInterface;
 import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.insert.InsertAtGivenIndexDLLStrategy;
 import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.insert.InsertOrchestratorServiceDLL;
 import com.github.sergiooliveirabr.algostruct.service.doublelinkedlist.search.GetElementByIndexDLLStrategy;
@@ -25,6 +26,7 @@ public class DoubleLinkedListController {
     private final DeleteOrchestratorDLLService<Integer> deleteOrchestratorDLLService;
     private final DeleteByValueDLLService deleteByValueDLLService;
     private final GetElementByIndexDLLStrategy getElementByIndexDLLStrategy;
+    private final RemoveDuplicatesInterface removeDuplicatesInterface;
 
     @Autowired
     public DoubleLinkedListController(DoubleLinkedListService<Integer> doubleLinkedListService,
@@ -32,7 +34,8 @@ public class DoubleLinkedListController {
                                       InsertAtGivenIndexDLLStrategy insertAtGivenIndexDLLStrategy,
                                       DeleteOrchestratorDLLService<Integer> deleteOrchestratorDLLService,
                                       DeleteByValueDLLService deleteByValueDLLService,
-                                      GetElementByIndexDLLStrategy getElementByIndexDLLStrategy) {
+                                      GetElementByIndexDLLStrategy getElementByIndexDLLStrategy,
+                                      RemoveDuplicatesInterface removeDuplicatesInterface) {
 
         this.doubleLinkedListService = doubleLinkedListService;
         this.insertOrchestratorServiceDLL = insertOrchestratorServiceDLL;
@@ -40,6 +43,7 @@ public class DoubleLinkedListController {
         this.deleteOrchestratorDLLService = deleteOrchestratorDLLService;
         this.deleteByValueDLLService = deleteByValueDLLService;
         this.getElementByIndexDLLStrategy = getElementByIndexDLLStrategy;
+        this.removeDuplicatesInterface = removeDuplicatesInterface;
     }
 
     @GetMapping("/page")
@@ -86,6 +90,12 @@ public class DoubleLinkedListController {
                                        RedirectAttributes redirectAttributes) {
         redirectAttributes.addFlashAttribute("indexElement",
                 "Index " + index + " is " +  getElementByIndexDLLStrategy.getElement(index));
+        return "redirect:/double-linked-list/page";
+    }
+
+    @PostMapping("/remove-duplicates")
+    public String removeDuplicates() {
+        removeDuplicatesInterface.removeDuplicatesDLLStrategy();
         return "redirect:/double-linked-list/page";
     }
 }
