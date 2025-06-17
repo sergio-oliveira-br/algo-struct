@@ -30,8 +30,10 @@ public class RemoveDuplicateDLL implements RemoveDuplicatesInterface {
 
         while (current != null) {
 
-            if (!seenElements.add(current.getElement())){
+            System.out.println("adicionando os elementos: " + seenElements);
 
+            if (!seenElements.add(current.getElement())){
+                System.out.println("!elementos! " + seenElements);
                 if (current.getElement().equals(current.getPrevious().getElement())) {
                     System.out.println("Elemento igual encontrado na sequencia");
 
@@ -53,19 +55,23 @@ public class RemoveDuplicateDLL implements RemoveDuplicatesInterface {
                         doubleLinkedListService.setTailDLL(previous);
                     }
                 }
-                System.out.println("************");
-                System.out.println("Current element " + current.getElement());
-                System.out.println("Elementos repetidos:  " + seenElements);
 
                 //se é repedito nao em sequencia é a calda é um deles
-                if (current.getNext().equals(doubleLinkedListService.getTailDLL())) {
-                    System.out.println("entrei na calda");
-                    System.out.println("previous do current " + current.getPrevious().getElement());
-                    System.out.println("next " + current.getNext().getElement());
+                if (current.getElement().equals(doubleLinkedListService.getTailDLL().getElement())) {
+
+                    NodeDLL<Integer> previous = current.getPrevious();
+                    previous.setNext(null);
+                    doubleLinkedListService.setTailDLL(previous);
                 }
+                else {
+                    System.out.println("este é um repedito que nao é a calda e nao esta na sequencia");
+                    System.out.println("current: " + current.getElement());
+                    System.out.println("elements seens: " + seenElements);
 
-
-
+                    NodeDLL<Integer> previous = current.getPrevious();
+                    previous.setNext(current.getNext());
+                    current.getNext().setPrevious(previous);
+                }
             }
             //System.out.println("current " + current.getElement() + " getting next " + current.getNext().getElement());
             current = current.getNext();
