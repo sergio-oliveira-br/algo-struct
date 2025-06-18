@@ -28,52 +28,22 @@ public class RemoveDuplicateDLL implements RemoveDuplicatesInterface {
         Set<Integer> seenElements = new HashSet<>();
         NodeDLL<Integer> current = doubleLinkedListService.getHeadDLL();
 
-        while (current != null) {
+        while(current != null) {
+            NodeDLL<Integer> next = current.getNext();
 
-            System.out.println("adicionando os elementos: " + seenElements);
-
-            if (!seenElements.add(current.getElement())){
-                System.out.println("!elementos! " + seenElements);
-                if (current.getElement().equals(current.getPrevious().getElement())) {
-                    System.out.println("Elemento igual encontrado na sequencia");
-
-                    //The Duplicate is not the tail, and it is in sequence
-                    if (current.getNext() != null) {
-                        System.out.println("Elimnando elemento que NÃO É A CALDA");
-
-                        NodeDLL<Integer> previous = current.getPrevious();
-                        NodeDLL<Integer> next = current.getNext();
-
-                        previous.setNext(current.getNext());
-                        next.setPrevious(previous);
-
-                    }
-                    else {
-                        System.out.println("Elimnando a CALDA");
-                        NodeDLL<Integer> previous = current.getPrevious();
-                        previous.setNext(null);
-                        doubleLinkedListService.setTailDLL(previous);
-                    }
-                }
-
-                //se é repedito nao em sequencia é a calda é um deles
-                if (current.getElement().equals(doubleLinkedListService.getTailDLL().getElement())) {
-
-                    NodeDLL<Integer> previous = current.getPrevious();
+            if (!seenElements.add(current.getElement())) {
+                NodeDLL<Integer> previous = current.getPrevious();
+                //tail
+                if (next == null){
                     previous.setNext(null);
                     doubleLinkedListService.setTailDLL(previous);
                 }
+                //not tail
                 else {
-                    System.out.println("este é um repedito que nao é a calda e nao esta na sequencia");
-                    System.out.println("current: " + current.getElement());
-                    System.out.println("elements seens: " + seenElements);
-
-                    NodeDLL<Integer> previous = current.getPrevious();
-                    previous.setNext(current.getNext());
-                    current.getNext().setPrevious(previous);
+                    previous.setNext(next);
+                    next.setPrevious(previous);
                 }
             }
-            //System.out.println("current " + current.getElement() + " getting next " + current.getNext().getElement());
             current = current.getNext();
         }
     }
