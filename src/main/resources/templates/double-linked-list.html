@@ -19,7 +19,7 @@
         <header>
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="/index">Home</a>
+                    <a class="navbar-brand" th:href="@{/index}">Home</a>
 
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,19 +31,19 @@
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                             <li class="nav-item">
-                                <a class="nav-link" href="/generate-and-sort/page">Sort Algorithms</a>
+                                <a class="nav-link" th:href="@{/generate-and-sort/page}">Sort Algorithms</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="/generate-and-search/page">Linear Search</a>
+                                <a class="nav-link" th:href="@{/generate-and-search/page}">Linear Search</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="/linked-list/page">Linked List</a>
+                                <a class="nav-link" th:href="@{/linked-list/page}">Linked List</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="/double-linked-list/page">Double Linked List</a>
+                                <a class="nav-link active" aria-current="page" th:href="@{/double-linked-list/page}">Double Linked List</a>
                             </li>
 
                             <li class="nav-item">
