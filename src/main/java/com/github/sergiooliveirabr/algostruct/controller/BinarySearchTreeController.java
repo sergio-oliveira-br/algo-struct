@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/binary-search-tree")
-public class BinarySearchTree {
+public class BinarySearchTreeController {
 
     @GetMapping("/page")
     public String showBSTPage(Model model) {
