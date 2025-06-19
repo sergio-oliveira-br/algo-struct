@@ -63,10 +63,30 @@
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-4 mt-3">
                     <div class="card">
-                        <h4 class="card-header">Fibonacci Sequence</h4>
+                        <h4 class="card-header">Factorial</h4>
                         <div class="card-body">
-                            <p>The method uses recursive calculation to
-                                calculate the factorial of a non-negative integer
+                            <p>The Factorial of a positive integer n,
+                                denoted by n!, is the product of
+                                all positive integers smaller than or equal to n.
+                            </p>
+
+                            <form th:action="@{/recursion/factorial}" method="post">
+                                <div class="input-group">
+                                    <input type="number" class="form-control" placeholder="Insert Number"
+                                           name="number" min="1" max="50" aria-label="">
+                                </div>
+                                <button type="submit" class="btn btn-dark col-12 mt-3">Calculate</button>
+                            </form>
+                        </div> <!-- card-body -->
+                    </div> <!-- card -->
+                </div> <!-- col -->
+
+                <div class="col-12 col-md-6 col-lg-4 mt-3">
+                    <div class="card">
+                        <h4 class="card-header">Fibonacci</h4>
+                        <div class="card-body">
+                            <p>The Fibonacci sequence is a series of numbers
+                                where each number is the sum of the two preceding numbers.
                             </p>
 
                             <form>
@@ -74,15 +94,12 @@
                                     <input type="number" class="form-control" placeholder="Insert Number" id=""
                                            name="" min="1" max="50" aria-label="">
                                 </div>
-                                <p class="text-muted mt-3">The factorial of a positive integer n,
-                                    denoted by n!, is the product of
-                                    all positive integers smaller than or equal to n.
-                                </p>
-                                <button type="submit" class="btn btn-dark col-12">Calculate</button>
+                                <button type="submit" class="btn btn-dark col-12 mt-3">Calculate</button>
                             </form>
                         </div> <!-- card-body -->
                     </div> <!-- card -->
                 </div> <!-- col -->
+
             </div> <!-- row -->
 
 
@@ -90,7 +107,10 @@
             <div class="card mt-3">
                 <h4 class="card-header">Output</h4>
                 <div class="card-body">
-
+                    <p>The Factorial of <b th:text="${factorialnum}"></b> is: <b th:text="${factorial}"></b></p>
+                    <ul>
+                        <li th:each="step : ${steps}" th:text="${step}"></li>
+                    </ul>
                 </div>
             </div>
         </main>
