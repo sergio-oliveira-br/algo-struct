@@ -109,10 +109,12 @@
             <div class="card mt-3">
                 <h4 class="card-header">Output</h4>
                 <div class="card-body">
-                    <p>The Factorial of <b th:text="${factorialnum}"></b> is: <b th:text="${factorial}"></b></p>
-                    <ul>
-                        <li th:each="step : ${steps}" th:text="${step}"></li>
-                    </ul>
+                    <div th:if="${factorialnum != null}">
+                        <p>The Factorial of <b th:text="${factorialnum}"></b> is: <b th:text="${factorial}"></b></p>
+                        <ul>
+                            <li th:each="step : ${steps}" th:text="${step}"></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </main>
