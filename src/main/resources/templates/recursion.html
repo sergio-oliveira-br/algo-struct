@@ -71,9 +71,10 @@
                             </p>
 
                             <form th:action="@{/recursion/factorial}" method="post">
+                                <label for="factorialInput" class="form-label text-muted">Enter a number to calculate its factorial</label>
                                 <div class="input-group">
-                                    <input type="number" class="form-control" placeholder="Insert Number"
-                                           name="number" min="1" max="50" aria-label="">
+                                    <input type="number" id="factorialInput" class="form-control" placeholder="Insert Number"
+                                           name="number" min="1" max="50" required>
                                 </div>
                                 <button type="submit" class="btn btn-dark col-12 mt-3">Calculate</button>
                             </form>
@@ -91,7 +92,8 @@
 
                             <form>
                                 <div class="input-group">
-                                    <input type="number" class="form-control" placeholder="Insert Number" id=""
+                                    <label for="fibonacciInput" class="form-label text-muted">Enter a number to calculate the Fibonacci Sequence</label>
+                                    <input type="number"  id="fibonacciInput" class="form-control" placeholder="Insert Number"
                                            name="" min="1" max="50" aria-label="">
                                 </div>
                                 <button type="submit" class="btn btn-dark col-12 mt-3">Calculate</button>
