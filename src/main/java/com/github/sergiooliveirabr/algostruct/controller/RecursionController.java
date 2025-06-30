@@ -4,6 +4,7 @@ import com.github.sergiooliveirabr.algostruct.dto.FactorialResult;
 import com.github.sergiooliveirabr.algostruct.dto.FibonacciResult;
 import com.github.sergiooliveirabr.algostruct.service.recursion.FactorialService;
 import com.github.sergiooliveirabr.algostruct.service.recursion.FibonacciService;
+import com.github.sergiooliveirabr.algostruct.service.recursion.ReverseStringService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,20 +20,31 @@ public class RecursionController {
 
     private final FactorialService factorialService;
     private final FibonacciService fibonacciService;
+    private final ReverseStringService reverseStringService;
 
     @Autowired
-    public RecursionController(FactorialService factorialService, FibonacciService fibonacciService) {
+    public RecursionController(FactorialService factorialService,
+                               FibonacciService fibonacciService,
+                               ReverseStringService reverseStringService) {
+
         this.factorialService = factorialService;
         this.fibonacciService = fibonacciService;
+        this.reverseStringService = reverseStringService;
     }
 
     @GetMapping("/page")
     public String showRecursionPage(Model model) {
+
+        //Factorial
         model.addAttribute("factorialnum");
         model.addAttribute("factorial");
         model.addAttribute("steps");
 
+        //Fibonacci
         model.addAttribute("fibonacciResult");
+
+        //Reveser Word
+        model.addAttribute("wordReversed");
         return "recursion";
     }
 
@@ -53,6 +65,14 @@ public class RecursionController {
 
         FibonacciResult fibResult = fibonacciService.displayFibonacciWithSteps(number);
         redirectAttributes.addFlashAttribute("fibonacciResult", fibResult);
+
+        return "redirect:/recursion/page";
+    }
+
+    @PostMapping("/reverse")
+    public String reverseStr(@RequestParam String word, RedirectAttributes redirectAttributes) {
+
+        redirectAttributes.addFlashAttribute("wordReversed", reverseStringService.reverseString(word));
 
         return "redirect:/recursion/page";
     }
