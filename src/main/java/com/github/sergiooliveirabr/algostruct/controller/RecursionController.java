@@ -1,6 +1,7 @@
 package com.github.sergiooliveirabr.algostruct.controller;
 
 import com.github.sergiooliveirabr.algostruct.dto.FactorialResult;
+import com.github.sergiooliveirabr.algostruct.dto.FibonacciResult;
 import com.github.sergiooliveirabr.algostruct.service.recursion.FactorialService;
 import com.github.sergiooliveirabr.algostruct.service.recursion.FibonacciService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,7 @@ public class RecursionController {
         model.addAttribute("factorial");
         model.addAttribute("steps");
 
-        model.addAttribute("fibonaccinum");
+        model.addAttribute("fibonacciResult");
         return "recursion";
     }
 
@@ -48,10 +49,10 @@ public class RecursionController {
     }
 
     @PostMapping("/fibonacci")
-    public String fibonacci(@RequestParam int number, RedirectAttributes redirectAttributes) {
+    public String fibonacci(@RequestParam(name = "number", required = false ) int number, RedirectAttributes redirectAttributes) {
 
-        redirectAttributes.addFlashAttribute("fibonaccinum",
-                fibonacciService.displayFibonacciWithSteps(number));
+        FibonacciResult fibResult = fibonacciService.displayFibonacciWithSteps(number);
+        redirectAttributes.addFlashAttribute("fibonacciResult", fibResult);
 
         return "redirect:/recursion/page";
     }
