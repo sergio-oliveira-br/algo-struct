@@ -102,6 +102,26 @@
                     </div> <!-- card -->
                 </div> <!-- col -->
 
+                <div class="col-12 col-md-6 col-lg-4 mt-3">
+                    <div class="card">
+                        <h4 class="card-header">Reverse a Word</h4>
+                        <div class="card-body">
+                            <p>The method receives a string and returns this inverted string,
+                                using only recursion (without using loops or the language’s ready-made
+                                string inversion auxiliary methods).
+                            </p>
+
+                            <form th:action="@{/recursion/reverse}" method="post">
+                                <div class="input-group">
+                                    <input type="text"  id="reversedWord" class="form-control" placeholder="Enter a Word"
+                                           name="word" aria-label="Reverse Word">
+                                </div>
+                                <button type="submit" class="btn btn-dark col-12 mt-3">Reverse</button>
+                            </form>
+                        </div> <!-- card-body -->
+                    </div> <!-- card -->
+                </div> <!-- col -->
+
             </div> <!-- row -->
 
 
@@ -128,6 +148,10 @@
                         <div th:unless="${factorialnum != null || fibonacciResult != null}">
                             <p>No calculation yet. Enter a number.</p>
                         </div>
+                    </div>
+
+                    <div>
+                        <p th:text="${wordReversed}"></p>
                     </div>
 
                 </div>
