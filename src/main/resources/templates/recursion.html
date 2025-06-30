@@ -117,7 +117,17 @@
                     </div>
 
                     <div>
-                        <p th:text="${fibonaccinum}"></p>
+                        <div th:if="${fibonacciResult != null}">
+                            <h3>Fibonacci Tesults</h3>
+                            <p>The <b><span th:text="${fibonacciResult.enteredNum}"></span></b>º term of the Fibonacci sequence is: <b><span th:text="${fibonacciResult.result}"></span></b></p>
+
+                            <h4>Steps of Recursion:</h4>
+                            <ul style="list-style-type: none; padding-left: 0;"> <li th:each="step : ${fibonacciResult.steps}" th:text="${step}" style="font-family: monospace; white-space: pre;"></li>
+                            </ul>
+                        </div>
+                        <div th:unless="${factorialnum != null || fibonacciResult != null}">
+                            <p>No calculation yet. Enter a number.</p>
+                        </div>
                     </div>
 
                 </div>
