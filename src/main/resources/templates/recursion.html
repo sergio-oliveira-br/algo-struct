@@ -145,13 +145,13 @@
                             <ul style="list-style-type: none; padding-left: 0;"> <li th:each="step : ${fibonacciResult.steps}" th:text="${step}" style="font-family: monospace; white-space: pre;"></li>
                             </ul>
                         </div>
-                        <div th:unless="${factorialnum != null || fibonacciResult != null}">
-                            <p>No calculation yet. Enter a number.</p>
+                        <div th:unless="${factorialnum != null || fibonacciResult != null || wordReversed != null}">
+                            <p>No calculation or word to reversed yet. Enter a number or a word to reverse.</p>
                         </div>
                     </div>
 
-                    <div>
-                        <p th:text="${wordReversed}"></p>
+                    <div th:if="${wordReversed != null}">
+                        <p>Your word " <b><span th:text="${word}"></span></b> " reversed is: <b><span th:text="${wordReversed}"></span></b></p>
                     </div>
 
                 </div>
