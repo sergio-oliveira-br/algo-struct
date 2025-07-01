@@ -44,6 +44,7 @@ public class RecursionController {
         model.addAttribute("fibonacciResult");
 
         //Reveser Word
+        model.addAttribute("word");
         model.addAttribute("wordReversed");
         return "recursion";
     }
@@ -61,7 +62,8 @@ public class RecursionController {
     }
 
     @PostMapping("/fibonacci")
-    public String fibonacci(@RequestParam(name = "number", required = false ) int number, RedirectAttributes redirectAttributes) {
+    public String fibonacci(@RequestParam(name = "number", required = false ) int number,
+                            RedirectAttributes redirectAttributes) {
 
         FibonacciResult fibResult = fibonacciService.displayFibonacciWithSteps(number);
         redirectAttributes.addFlashAttribute("fibonacciResult", fibResult);
@@ -72,8 +74,8 @@ public class RecursionController {
     @PostMapping("/reverse")
     public String reverseStr(@RequestParam String word, RedirectAttributes redirectAttributes) {
 
+        redirectAttributes.addFlashAttribute("word", word);
         redirectAttributes.addFlashAttribute("wordReversed", reverseStringService.reverseString(word));
-
         return "redirect:/recursion/page";
     }
 }
