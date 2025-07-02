@@ -124,6 +124,32 @@
 
             </div> <!-- row -->
 
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-4 mt-3">
+                    <div class="card">
+                        <h4 class="card-header">Reverse a Word</h4>
+                        <div class="card-body">
+                            <p>This method calculates "x" raised to the power of "n",
+                                where "x" is the base and "n" is the exponent, using only recursion.
+                            </p>
+
+                            <form th:action="@{/recursion/power}" method="post">
+                                <div class="input-group mb-3">
+                                    <input type="number" class="form-control" placeholder="Enter the base 'x'"
+                                           name="base" aria-label="Base">
+                                </div>
+
+                                <div class="input-group">
+                                    <input type="number" class="form-control" placeholder="Enter the exponent 'n'"
+                                           name="exponent" aria-label="Exponent">
+                                </div>
+                                <button type="submit" class="btn btn-dark col-12 mt-3">Calculate</button>
+                            </form>
+                        </div> <!-- card-body -->
+                    </div> <!-- card -->
+                </div> <!-- col -->
+            </div> <!-- row -->
+
 
             <!-- Output -->
             <div class="card mt-3">
@@ -145,10 +171,15 @@
                             <ul style="list-style-type: none; padding-left: 0;"> <li th:each="step : ${fibonacciResult.steps}" th:text="${step}" style="font-family: monospace; white-space: pre;"></li>
                             </ul>
                         </div>
-                        <div th:unless="${factorialnum != null || fibonacciResult != null || wordReversed != null}">
+                        <div th:unless="${factorialnum != null || fibonacciResult != null || wordReversed != null || powerResult != null}">
                             <p>No calculation or word to reversed yet. Enter a number or a word to reverse.</p>
                         </div>
                     </div>
+
+                    <div th:if="${powerResult != null}">
+                        <p>The result of "<span th:text="${base}"></span> ^ <span th:text="${exponent}"></span>" is <span th:text="${powerResult}"></span></p>
+                    </div>
+
 
                     <div th:if="${wordReversed != null}">
                         <p>Your word " <b><span th:text="${word}"></span></b> " reversed is: <b><span th:text="${wordReversed}"></span></b></p>
