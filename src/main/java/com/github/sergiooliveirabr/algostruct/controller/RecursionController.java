@@ -4,6 +4,7 @@ import com.github.sergiooliveirabr.algostruct.dto.FactorialResult;
 import com.github.sergiooliveirabr.algostruct.dto.FibonacciResult;
 import com.github.sergiooliveirabr.algostruct.service.recursion.FactorialService;
 import com.github.sergiooliveirabr.algostruct.service.recursion.FibonacciService;
+import com.github.sergiooliveirabr.algostruct.service.recursion.PowerCalculatorService;
 import com.github.sergiooliveirabr.algostruct.service.recursion.ReverseStringService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,15 +22,18 @@ public class RecursionController {
     private final FactorialService factorialService;
     private final FibonacciService fibonacciService;
     private final ReverseStringService reverseStringService;
+    private final PowerCalculatorService powerCalculatorService;
 
     @Autowired
     public RecursionController(FactorialService factorialService,
                                FibonacciService fibonacciService,
-                               ReverseStringService reverseStringService) {
+                               ReverseStringService reverseStringService,
+                               PowerCalculatorService powerCalculatorService) {
 
         this.factorialService = factorialService;
         this.fibonacciService = fibonacciService;
         this.reverseStringService = reverseStringService;
+        this.powerCalculatorService = powerCalculatorService;
     }
 
     @GetMapping("/page")
@@ -46,6 +50,12 @@ public class RecursionController {
         //Reveser Word
         model.addAttribute("word");
         model.addAttribute("wordReversed");
+
+        //Power
+        model.addAttribute("base");
+        model.addAttribute("exponent");
+        model.addAttribute("powerResult");
+
         return "recursion";
     }
 
@@ -76,6 +86,19 @@ public class RecursionController {
 
         redirectAttributes.addFlashAttribute("word", word);
         redirectAttributes.addFlashAttribute("wordReversed", reverseStringService.reverseString(word));
+        return "redirect:/recursion/page";
+    }
+
+    @PostMapping("/power")
+    public String power(@RequestParam int base,
+                        @RequestParam int exponent,
+                        RedirectAttributes redirectAttributes) {
+
+        redirectAttributes.addFlashAttribute("base", base);
+        redirectAttributes.addFlashAttribute("exponent", exponent);
+        redirectAttributes.addFlashAttribute("powerResult",
+                powerCalculatorService.calculatePower(base, exponent));
+
         return "redirect:/recursion/page";
     }
 }
