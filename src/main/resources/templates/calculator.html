@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
         <meta name="description" content="The Calculator is designed to simplify the process of estimating the total cost of an imported product.">
@@ -48,26 +48,26 @@
 
                     <div class="card-body">
 
-                        <form>
+                        <form th:action="@{/calculator/orchestrator}" method="post">
                             <h4>Domestic Shipping</h4>
                             <label>Fee <b>(¥)</b></label>
                             <div class="input-group mb-3">
                                 <input type="number" class="form-control" value="12"
-                                       aria-label="numbers" name="domestic-shipping" min="1" required>
+                                       aria-label="numbers" name="domesticShippingfixedFee" min="1" required>
                             </div>
 
                             <h4 class="pt-3 border-top">International Shipping</h4>
                             <label>Weigh <b>(kg)</b> </label>
                             <div class="input-group mb-3">
                                 <input type="number" class="form-control" placeholder="0.200"
-                                       aria-label="numbers" name="weigh" min="1" required>
+                                       aria-label="numbers" name="productWeight" min="0"  step="0.001" required>
                             </div>
 
                             <h4 class="pt-3 border-top">Exchange Currency</h4>
                             <label>Product Price <b>(¥)</b> </label>
                             <div class="input-group mb-3">
                                 <input type="number" class="form-control"
-                                       aria-label="numbers" name="weigh" min="1" required>
+                                       aria-label="numbers" name="weigh" min="1">
                             </div>
                             <button type="submit" class="btn btn-dark col-12">Calculate</button>
                         </form>
@@ -87,8 +87,10 @@
                         </a>
                     </div>
 
-                    <p>Result</p>
 
+                    <div class="card-body">
+                        <p th:text="${productFinalCost}"> Should display the calculation</p>
+                    </div>
                 </div>
 
             </div>
