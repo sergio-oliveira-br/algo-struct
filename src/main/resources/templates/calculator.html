@@ -64,6 +64,9 @@
                             </div>
 
                             <h4 class="pt-3 border-top">Exchange Currency</h4>
+                            <p>Chinese Yuan Renminbi: <span th:text="${currency}"></span></p>
+
+
                             <label>Product Price <b>(¥)</b> </label>
                             <div class="input-group mb-3">
                                 <input type="number" class="form-control"
@@ -89,7 +92,8 @@
 
 
                     <div class="card-body">
-                        <p th:text="${productFinalCost}"> Should display the calculation</p>
+                        <p th:text="${productFinalCost}"></p>
+
                     </div>
                 </div>
 
