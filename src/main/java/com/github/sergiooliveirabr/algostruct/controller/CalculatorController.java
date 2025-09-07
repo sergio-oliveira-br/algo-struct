@@ -1,5 +1,6 @@
 package com.github.sergiooliveirabr.algostruct.controller;
 
+import com.github.sergiooliveirabr.algostruct.dto.FinalCostDTO;
 import com.github.sergiooliveirabr.algostruct.service.calculator.CalculatorOrchestrator;
 import com.github.sergiooliveirabr.algostruct.service.calculator.CurrencyConversionService;
 import org.springframework.stereotype.Controller;
@@ -28,6 +29,11 @@ public class CalculatorController {
     public String showCalculatorPage(Model model) {
 
         model.containsAttribute("productFinalCost");
+        model.addAttribute("productWeight");
+        model.addAttribute("internalFee");
+        model.addAttribute("externalFee");
+
+
         model.addAttribute("currency", currencyConversionService.getExchangeRate("CNY"));
 
 
@@ -39,7 +45,17 @@ public class CalculatorController {
                                        @RequestParam int domesticShippingfixedFee,
                                        @RequestParam double productWeight) {
 
-        double priceResult = calculatorOrchestrator.calculator(domesticShippingfixedFee, productWeight);
+        FinalCostDTO priceResult = calculatorOrchestrator.calculator(domesticShippingfixedFee, productWeight);
+
+        redirectAttributes.addFlashAttribute("productWeight",
+                "Weight: " + productWeight + " grams");
+
+        redirectAttributes.addFlashAttribute("internalFee",
+                "Fee: " + priceResult.getInternalShipping() + " ¥");
+
+        redirectAttributes.addFlashAttribute("externalFee",
+                "Fee: " + priceResult.getExternalShipping() + " ¥");
+
         redirectAttributes.addFlashAttribute("productFinalCost",
                 "Final Price: " + priceResult);
 
