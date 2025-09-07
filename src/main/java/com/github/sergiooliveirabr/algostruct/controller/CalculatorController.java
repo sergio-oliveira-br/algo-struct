@@ -43,9 +43,10 @@ public class CalculatorController {
     @PostMapping("/orchestrator")
     public String showOrchestratorPage(RedirectAttributes redirectAttributes,
                                        @RequestParam int domesticShippingfixedFee,
-                                       @RequestParam double productWeight) {
+                                       @RequestParam double productWeight,
+                                       @RequestParam double productPrice) {
 
-        FinalCostDTO priceResult = calculatorOrchestrator.calculator(domesticShippingfixedFee, productWeight);
+        FinalCostDTO priceResult = calculatorOrchestrator.calculator(domesticShippingfixedFee, productWeight, productPrice);
 
         redirectAttributes.addFlashAttribute("productWeight",
                 "Weight: " + productWeight + " grams");
