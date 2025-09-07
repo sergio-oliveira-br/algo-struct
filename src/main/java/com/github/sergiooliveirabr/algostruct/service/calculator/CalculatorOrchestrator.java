@@ -1,5 +1,6 @@
 package com.github.sergiooliveirabr.algostruct.service.calculator;
 
+import com.github.sergiooliveirabr.algostruct.dto.FinalCostDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +18,7 @@ public class CalculatorOrchestrator {
         this.internationalShippingService = internationalShippingService;
     }
 
-    public double calculator(int domesticShippingfixedFee, double productWeight) {
+    public FinalCostDTO calculator(int domesticShippingfixedFee, double productWeight) {
 
         if (productWeight <= 0) {
             throw new IllegalArgumentException("Produt Weight must be greater than zero");
@@ -25,7 +26,8 @@ public class CalculatorOrchestrator {
 
         int domesticFee = domesticShippingService.domShippingCalculator(domesticShippingfixedFee);
         double internationalFee = internationalShippingService.intShippingCalculator(productWeight);
+        double shipmentFee = domesticFee + internationalFee;
 
-        return domesticFee + internationalFee;
+        return new FinalCostDTO(domesticFee, internationalFee, shipmentFee);
     }
 }
