@@ -90,23 +90,30 @@
                         </a>
                     </div>
 
-
                     <div class="card-body">
-                        <h3>Overview</h3>
-                        <p th:text="${productFinalCost}"></p>
+                        <h4>Overview</h4>
+                        <h3 th:text="${productFinalPriceEUR}"></h3>
+                        <p th:text="${productFinalPriceCYR}"></p>
 
-                        <p>Internal Shippiment:</p>
+<!--                        <p th:text="${productFinalCost}"></p>-->
+
+                        <p class="pt-3 border-top">Internal Shippiment:</p>
                         <ul>
                             <li th:text="${internalFee}"></li>
                         </ul>
 
-
-                       <p>External Shippiment:</p>
+                       <p class="pt-3 border-top">External Shippiment:</p>
                         <ul>
                             <li th:text="${productWeight}"></li>
                             <li th:text="${externalFee}"></li>
                         </ul>
 
+                        <p class="pt-3 border-top">Card Fee:</p>
+                        <ul>
+                            <li th:text="${productPrice}"></li>
+                            <li th:text="${serviceCharge}"></li>
+                            <li th:text="${plataformServiceFee}"></li>
+                        </ul>
                     </div>
                 </div>
 
