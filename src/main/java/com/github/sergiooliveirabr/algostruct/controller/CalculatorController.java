@@ -32,10 +32,14 @@ public class CalculatorController {
         model.addAttribute("productWeight");
         model.addAttribute("internalFee");
         model.addAttribute("externalFee");
+        model.addAttribute("serviceCharge");
+        model.addAttribute("plataformServiceFee");
+        model.addAttribute("productFinalPriceCYR");
+        model.addAttribute("productFinalPriceEUR");
+        model.addAttribute("productPrice");
 
 
         model.addAttribute("currency", currencyConversionService.getExchangeRate("CNY"));
-
 
         return "calculator";
     }
@@ -48,15 +52,35 @@ public class CalculatorController {
 
         FinalCostDTO priceResult = calculatorOrchestrator.calculator(domesticShippingfixedFee, productWeight, productPrice);
 
-        redirectAttributes.addFlashAttribute("productWeight",
-                "Weight: " + productWeight + " grams");
-
+        // Internal Shippment
         redirectAttributes.addFlashAttribute("internalFee",
                 "Fee: " + priceResult.getInternalShipping() + " ¥");
 
+        // External Shippment
         redirectAttributes.addFlashAttribute("externalFee",
                 "Fee: " + priceResult.getExternalShipping() + " ¥");
 
+        redirectAttributes.addFlashAttribute("productWeight",
+                "Weight: " + productWeight + " grams");
+
+        // Card Fee
+        redirectAttributes.addFlashAttribute("productPrice",
+                "Product Price w/tax: " + productPrice);
+
+        redirectAttributes.addFlashAttribute("serviceCharge",
+                "Service Charge: " + priceResult.getServiceCharge() + " ¥");
+
+        redirectAttributes.addFlashAttribute("plataformServiceFee",
+                "Plataform Service Fee: " + priceResult.getPlataformServiceFee() + " ¥");
+
+        // Final Price CYR & EUR
+        redirectAttributes.addFlashAttribute("productFinalPriceCYR",
+                "Final Price: " + priceResult.getProductFinalPriceCYR() + " ¥");
+
+        redirectAttributes.addFlashAttribute("productFinalPriceEUR",
+                "Final Price: " + priceResult.getProductFinalPriceEUR() + " €");
+
+        // The object
         redirectAttributes.addFlashAttribute("productFinalCost",
                 "Final Price: " + priceResult);
 
