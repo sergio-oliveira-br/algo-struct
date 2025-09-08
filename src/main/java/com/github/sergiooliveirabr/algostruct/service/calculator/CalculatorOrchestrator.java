@@ -40,7 +40,7 @@ public class CalculatorOrchestrator {
         double plataformServiceFee = paymentFeeService.plataformServiceFeeService(productPrice);
 
         // Sum (¥)
-        double productFinalPriceCYR = shipmentFee + serviceCharge + plataformServiceFee;
+        double productFinalPriceCYR = shipmentFee + serviceCharge + plataformServiceFee + productPrice;
 
         // Conversion - CYR to EUR
         double productFinalPriceEUR = productFinalPriceCYR / currencyConversionService.getExchangeRate("CNY");
