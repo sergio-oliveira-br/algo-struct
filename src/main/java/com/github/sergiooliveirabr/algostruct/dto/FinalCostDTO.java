@@ -22,7 +22,8 @@ public class FinalCostDTO {
     // Product
     private double productPrice;
     private double productFinalPriceCYR;
-    private double productFinalPriceEUR;
+    private String productFinalPriceEURFormatted;
+
 
     public FinalCostDTO(int internalShipping,
                         double externalShipping,
@@ -31,7 +32,7 @@ public class FinalCostDTO {
                         double plataformServiceFee,
                         double productPrice,
                         double productFinalPriceCYR,
-                        double productFinalPriceEUR) {
+                        String productFinalPriceEURFormatted) {
 
         this.internalShipping = internalShipping;
         this.externalShipping = externalShipping;
@@ -40,6 +41,6 @@ public class FinalCostDTO {
         this.plataformServiceFee = plataformServiceFee;
         this.productPrice = productPrice;
         this.productFinalPriceCYR = productFinalPriceCYR;
-        this.productFinalPriceEUR = productFinalPriceEUR;
+        this.productFinalPriceEURFormatted = productFinalPriceEURFormatted;
     }
 }
