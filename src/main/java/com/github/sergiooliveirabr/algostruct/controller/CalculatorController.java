@@ -78,7 +78,7 @@ public class CalculatorController {
                 "Final Price: " + priceResult.getProductFinalPriceCYR() + " ¥");
 
         redirectAttributes.addFlashAttribute("productFinalPriceEUR",
-                "Final Price: " + priceResult.getProductFinalPriceEUR() + " €");
+                "Final Price: " + priceResult.getProductFinalPriceEURFormatted() + " €");
 
         // The object
         redirectAttributes.addFlashAttribute("productFinalCost",
