@@ -11,17 +11,20 @@ public class CalculatorOrchestrator {
     private final InternationalShippingService internationalShippingService;
     private final PaymentFeeService paymentFeeService;
     private final CurrencyConversionService currencyConversionService;
+    private final FormatValueService formatValueService;
 
     @Autowired
     public CalculatorOrchestrator(DomesticShippingService domesticShippingService,
                                   InternationalShippingService internationalShippingService,
                                   PaymentFeeService paymentFeeService,
-                                  CurrencyConversionService currencyConversionService) {
+                                  CurrencyConversionService currencyConversionService,
+                                  FormatValueService formatValueService) {
 
         this.domesticShippingService = domesticShippingService;
         this.internationalShippingService = internationalShippingService;
         this.paymentFeeService = paymentFeeService;
         this.currencyConversionService = currencyConversionService;
+        this.formatValueService = formatValueService;
     }
 
     public FinalCostDTO calculator(int domesticShippingfixedFee, double productWeight, double productPrice) {
@@ -45,6 +48,9 @@ public class CalculatorOrchestrator {
         // Conversion - CYR to EUR
         double productFinalPriceEUR = productFinalPriceCYR / currencyConversionService.getExchangeRate("CNY");
 
+        //formt (#.##)
+        String productFinalPriceEURFormatted = formatValueService.formatCurrency(productFinalPriceEUR);
+
         return new FinalCostDTO(
                 domesticFee,
                 internationalFee,
@@ -53,6 +59,8 @@ public class CalculatorOrchestrator {
                 plataformServiceFee,
                 productPrice,
                 productFinalPriceCYR,
-                productFinalPriceEUR);
+                productFinalPriceEURFormatted);
     }
+
+
 }
